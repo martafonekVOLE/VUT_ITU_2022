@@ -1,0 +1,43 @@
+*{
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+.sidePanel{
+    border-right: 1px solid;
+    height: 100vh;
+    position: static;
+}
+.sidePanel h1{
+    padding: 20px;
+}
+.header{
+    height: 50px;
+}
+.recipeContainer{
+    width: 100%;
+}
+.recipe{
+    margin-left: 2%;
+    border: 1px solid;
+    border-radius: 50px;
+    padding: 20px;
+    width: 28%;
+    float: left;
+    height: 350px;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-right: 3.33%;
+}
+.recipe:after{
+    clear: both;
+    display: table;
+    content: "";
+}
+.recipe h2{
+    overflow-y: hidden;
+}
+@media (max-width: 900px) {
+    .recipe{
+        width: 80%;
+    }
+}
