@@ -1,39 +1,67 @@
+async function getRecipes() {
 
-// let response = fetch('recepie.json')
-//     .then (response => {
-//         response.json();
-//         console.log(response.status); //200
-//     })
-//     .catch(error =>{
-//         console.log("An Error has occured while parsing .json");
-//     });
-
-async function getRecipe() {
     let url = 'recipe.json';
-    try{
-        let response = await fetch(url);
-        return await response.json();
-    }
-    catch(error){
-        console.log("An Error has occured while fetching json.");
+    try {
+        let res = await fetch(url);
+        return await res.json();
+    } catch (error) {
+        console.log(error);
+        return;
     }
 }
 
-async function renderRecipe(){
-    let recipes = getRecipe();
+async function renderRecipes() {
+    let recipes = await getRecipes();
+    searchFor = "";
+    searchFor = document.getElementById('filter').value;
+    if(searchFor !== ""){
+        let unfilteredRecipes = recipes;
+        recipes = [];
+        i = 0;
+        unfilteredRecipes.forEach(unfilteredRecipe => {
+            if(unfilteredRecipe.name == searchFor){ //TODO regex
+                recipes.push(unfilteredRecipe);
+            }
+            i++;
+        });
+    }
+
+
     let html = '';
-    // recipes.forEach(recipe =>{
-    //     let htmlSegment = '<div class="user"> <h2>${recipe.id}</h2>';
-    //     html += htmlSegment;
-    // });
+    recipes.forEach(recipe => {
+        let htmlSegment = `<div class="recipe" onclick="modalTrigger(${recipe.id})" id="${recipe.id}">
+                            <h2 class="recipeName" id="${recipe.id}_recipeName">${recipe.name}</h2>
+                            <div class="recipeCategory" id="${recipe.id}_recipeCategory">${recipe.category}</div>
+                            <div class="ingredients" id="${recipe.id}_recipeCategory">`;
+        (recipe.ingredients).forEach(ingredient => {
+            htmlSegment += `<span class="col-sm-4 ingredient">${ingredient} </span>`;
+        });
+        htmlSegment += `</div><div class="ingredientPhoto">
+                    <img width="200px" src="${recipe.photo}">
+                    </div>
+                    </div>`;
 
-    html += recipes;
-    let container = document.querySelector('.container');
-    container.innerHTML = html;
+        html += htmlSegment;
+    });
+
+    let recipeContainer = document.querySelector('.recipeContainer');
+    recipeContainer.innerHTML = html;
 }
 
-renderRecipe();
+var modal = document.getElementById("modal");
+function modalTrigger(id){
+    if(modal.style.display == "block"){
+        modal.style.display = "none";
+    }
+    else{
+        modal.style.display = "block";
+    }
 
+    newid = String(id);
+    console.log(newid);
+    var recipeID = "_recipeName";
+    console.log(document.getElementById(newid.concat(recipeID)).innerHTML);
+    document.getElementById("modalText").innerHTML = document.getElementById(newid.concat(recipeID)).innerHTML;
+}
 
-
-
+setInterval(renderRecipes, 500);
