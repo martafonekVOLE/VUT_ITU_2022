@@ -1,24 +1,17 @@
-[
-    {
-        "id": "1",
-        "name": "Buchta",
-        "category": "Sladké",
-        "ingredients": ["Cukr", "Vejce", "Olej"],
-        "photo": "img/default.png"
-    },
-    {
-        "id": "2",
-        "name": "Řízek",
-        "category": "Maso",
-        "ingredients": ["Kuřecí maso", "Vejce", "Strouhanka"],
-        "photo": "img/default.png"
-
-    },
-    {
-        "id": "3",
-        "name": "Nudle",
-        "category": "Bezmasá jídla",
-        "ingredients": ["Vegan hnus", "Zelí", "Bezmasé masové kuličky"],
-        "photo": "img/default.png"
-    }
+[{
+    "username": "john",
+    "firstName": "John",
+    "lastName": "Doe",
+    "gender": "Male",
+    "profileURL": "img/male.png",
+    "email": "john.doe@example.com"
+},
+{
+    "username": "jane",
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "gender": "Female",
+    "profileURL": "img/female.png",
+    "email": "jane.doe@example.com"
+}
 ]
