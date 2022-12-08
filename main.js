@@ -11,22 +11,40 @@ async function getRecipes() {
 }
 
 async function renderRecipes() {
+
+
     let recipes = await getRecipes();
     searchFor = "";
     searchFor = document.getElementById('filter').value;
-    if(searchFor !== ""){
+
+    // Search by filter
+    if (searchFor !== "")
+    {
         let unfilteredRecipes = recipes;
         recipes = [];
+
+        let expression = `^${searchFor}*`;
+        let regex = new RegExp(expression, 'igu');
+
         i = 0;
+
         unfilteredRecipes.forEach(unfilteredRecipe => {
-            if(unfilteredRecipe.name == searchFor){ //TODO regex
-                recipes.push(unfilteredRecipe);
+
+            const found = unfilteredRecipe.name.match(regex);
+
+            if (found)
+            {
+                if (found[0] !== "")
+                {
+                    recipes.push(unfilteredRecipe);
+                }
             }
+            
             i++;
         });
     }
 
-
+    
     let html = '';
     recipes.forEach(recipe => {
         let htmlSegment = `<div class="recipe" onclick="modalTrigger(${recipe.id})" id="${recipe.id}">
