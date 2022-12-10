@@ -53,17 +53,18 @@ async function renderRecipes() {
     
     let html = '';
     recipes.forEach(recipe => {
-        let htmlSegment = `<div class="recipe" id="${recipe.id}">
-                            <button onclick="modalTrigger(${recipe.id})">modal</button>
-                            <button onclick="swapContent(${recipe.id})">swap</button>
+        let htmlSegment = `<div class="recipe" style="background: url('${recipe.photo}'); background-size: cover;" id="${recipe.id}">
+                            <div class="nameSection">
                             <h2 class="recipeName" id="${recipe.id}_recipeName">${recipe.name}</h2>
-                            <div class="recipeCategory" id="${recipe.id}_recipeCategory">${recipe.category}</div>
+                            <div class="recipeCategory" id="${recipe.id}_recipeCategory">${recipe.category}</div>       
+                            <button class="btn btn-dark invisibleButton" onclick="modalTrigger(${recipe.id})">Zobrazit podrobnosti</button>
+                            <button class="btn btn-success invisibleButton" onclick="swapContent(${recipe.id})">Vařit</button>     
+                            </div>                
                             <div class="ingredients" id="${recipe.id}_recipeCategory">`;
         (recipe.ingredients).forEach(ingredient => {
             htmlSegment += `<span class="col-sm-4 ingredient">${ingredient} </span>`;
         });
         htmlSegment += `</div><div class="ingredientPhoto">
-                    <img width="200px" src="${recipe.photo}">
                     </div>
                     </div>`;
 
@@ -75,6 +76,10 @@ async function renderRecipes() {
 }
 
 function modalTrigger(id){
+    if(window.localStorage.getItem('closeModal') !== null){
+        window.localStorage.removeItem("closeModal");
+    }
+
     if(modal.style.display == "block"){
         modal.style.display = "none";
     }
@@ -82,11 +87,17 @@ function modalTrigger(id){
         modal.style.display = "block";
     }
 
-    newid = String(id);
-    console.log(newid);
-    var recipeID = "_recipeName";
-    console.log(document.getElementById(newid.concat(recipeID)).innerHTML);
-    document.getElementById("modalText").innerHTML = document.getElementById(newid.concat(recipeID)).innerHTML;
+    if(id == -10){
+        var htmlContent = `<iframe src="createRecipe.html" class="formInModal" width="100%" height="400">`;
+        document.getElementById("modalText").innerHTML = htmlContent;
+    }
+    else{
+        newid = String(id);
+        console.log(newid);
+        var recipeID = "_recipeName";
+        console.log(document.getElementById(newid.concat(recipeID)).innerHTML);
+        document.getElementById("modalText").innerHTML = document.getElementById(newid.concat(recipeID)).innerHTML;
+    }   
 }
 
 function swapContent(id){
@@ -122,5 +133,12 @@ function swapContent(id){
 function renderMe(recipeName){
     return ("HELLO" + recipeName);
 }
+function checkModal(){
+    if(window.localStorage.getItem('closeModal') !== null){
+        modalTrigger(-1);
+    }
+}
 var modal = document.getElementById("modal");
-setInterval(renderRecipes, 500);
+//TODO refresh only when necessary  -> animations
+setInterval(renderRecipes, 4000);
+setInterval(checkModal, 500);

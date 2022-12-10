@@ -13,15 +13,16 @@
         <!--Side panel-->
         <div class="col-sm-2">
             <div class="sidePanel">
-                <h1>Kapesní kuchaříček</h1>
-                <a href="createRecipe.html">Vložit recept</a><br>
-                <button onclick="swapContent(-1);">TEST</button>
-                <input placeholder="Filter" type="text" id="filter">
+                <img class="logo" src="img/logo.png">
+                <button class="btn btn-dark" style="margin-top: 20px;" onclick="modalTrigger(-10);">Vložit recept</button>
             </div>
         </div>
         <!--Content Page-->
-        <div class="col-sm-10">         
+        <div class="col-sm-10 rightsideBackground">         
             <div class="header"></div>
+            <div class="searchbar">
+                <input placeholder="Filter" type="text" class="form-control searchfield" id="filter">
+            </div>
             <div class="modal" id="modal">
                 <div class="modal-background" onclick="modalTrigger(-1)"></div>
                 <div class="modal-content">
