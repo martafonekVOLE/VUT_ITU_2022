@@ -3,7 +3,7 @@
     box-sizing: border-box;
 }
 .sidePanel{
-    border-right: 1px solid;
+    text-align: center;
     height: 100vh;
     position: static;
 }
@@ -17,10 +17,10 @@
     width: 100%;
 }
 .recipe{
+    position: relative;
     margin-left: 2%;
     border: 1px solid;
     border-radius: 50px;
-    padding: 20px;
     width: 28%;
     float: left;
     height: 350px;
@@ -36,7 +36,60 @@
 .recipe h2{
     overflow-y: hidden;
 }
-
+.recipe:hover > .nameSection{
+    height: 50%;
+    top: 50%;
+}
+.recipeOverlayContent{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.6);
+    display: none;
+}
+.recipeOverlay{
+    overflow-y: hidden;
+    width: 100%;
+    height: 100%;
+}
+.nameSection{
+    overflow-y: hidden;
+    transition: ease .5s;
+    position: absolute;
+    top: 80%;
+    height: 20%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+.recipePhoto{
+    overflow-y: none;
+    width: 100%;
+    height: 100%;
+}
+.invisibleButton{
+    margin-top: 5%;
+}
+.logo{
+    width: 100%;
+    border-radius: 50%;
+}
+.searchbar{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 2%;
+    width: 100%;
+    padding: 0;
+}
+.searchfield{
+    width: 95%;
+}
+.col-sm-2{
+    background-color: rgba(19, 35, 47, 0.285);
+}
+.rightsideBackground{
+    background: url('img/default.png');
+    box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.785);
+    background-size: cover;
+}
 /* Modal */
 .modal {
     display: none; /* Hidden by default */
@@ -63,11 +116,20 @@
     width: 90%;
     height: 90%;
 }
+.formInModal{
+    margin: auto;
+}
 .close{
     font-size: 2rem;
     color: red;
     width: min-content;
     cursor: pointer;
+}
+.ingredients{
+    display: none;
+}
+.hiddenButton{
+    display: none;
 }
 
 /* Media Queries */
