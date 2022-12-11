@@ -1,32 +1,74 @@
 <?php
-    if(isset($_POST['submitted'])){
+    ini_set('display_errors', 1);
+
+    if (isset($_POST['submitted']))
+    {
         $name = $_POST['name'];
         $category = $_POST['category'];
-        $ingredients = $_POST['ingredients'];
+        $portions = $_POST['portions'];
         $img = $_POST['img'];
+
+        unset($_POST['name']);
+        unset($_POST['category']);
+        unset($_POST['portions']);
+        unset($_POST['img']);
+        unset($_POST['submitted']);
     }
-    try{
+
+    try
+    {
         //TODO nastavit ukládání IMGs
         $data = file_get_contents('recipe.json');
+        
         $json_arr = json_decode($data, true);
-        //TODO auto increment
-        $json_arr[] = array('id'=>4, 'name'=>$name, 'category'=>$category, 'ingredients'=>[  $ingredients ], 'photo'=>$img);
+
+        $last_index = $json_arr[0]['id'];
+        $last_index++;
+        $a = array('id'=>"$last_index", 'name'=>$name, 'category'=>$category, 'portions'=>$portions, 'photo'=>$img);
+
+
+        $j = 1;
+        $ingredients = array();
+        
+        foreach ($_POST as $key => $value)
+        {
+            array_push($ingredients, $value);
+        }
+
+        $in = array();
+
+        for ($x = 0; $x < count($ingredients); $x+=3)
+        {
+            if ($ingredients[$x] === "")
+            {
+                break;
+            }
+
+            //$a["ingredient_$j"] = [$ingredients[$x], $ingredients[$x + 1], $ingredients[$x + 2]];
+            array_push($in, [$ingredients[$x], $ingredients[$x + 1], $ingredients[$x + 2]]);
+            
+            $j++;
+        }
+
+        array_push($a, $in);
+
+        $json_arr[] = $a;
         file_put_contents('recipe.json', json_encode($json_arr));
     }
-    catch(Exception $e){
+    catch(Exception $e)
+    {
         echo "Error has occured while inserting to JSON.";
         redirect('createRecipe.html');
     }
-    redirect('index.html');
+    
+    //redirect('index.html');
 
-function redirect($url)
-{
-    $string = '<script type="text/javascript">
-    window.localStorage.setItem("closeModal", 1);
-    </script>';
+    function redirect($url)
+    {
+        $string = '<script type="text/javascript">
+        window.localStorage.setItem("closeModal", 1);
+        </script>';
 
-    echo $string;
-}
-
-
+        echo $string;
+    }
 ?>
