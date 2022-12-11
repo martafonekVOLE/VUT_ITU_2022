@@ -22,7 +22,7 @@
         
         $json_arr = json_decode($data, true);
 
-        $last_index = $json_arr[0]['id'];
+        $last_index = max($json_arr[0]['id']);
         $last_index++;
         $a = array('id'=>"$last_index", 'name'=>$name, 'category'=>$category, 'portions'=>$portions, 'photo'=>$img);
 

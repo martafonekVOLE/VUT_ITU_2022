@@ -28,6 +28,8 @@ async function renderRecipes() {
 
     //TODO ziskat informaci o stavu pole
     let recipes = await getRecipes();
+    console.log("honvno");
+    console.log(recipes);
     searchFor = "";
     searchFor = document.getElementById('filter').value;
 
