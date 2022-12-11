@@ -21,15 +21,27 @@
                 <div class="col-sm-12">
                     <form method="post" action="editJson.php">
                         <div class="mb-3">
+                            <label>Název pokrmu</label>
                             <input type="text" class="form-control" placeholder="Název" required name="name">
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Kategorie" required name="category">
+                            <label>Počet porcí</label>
+                            <input type="number" class="form-control" placeholder="Počet porcí" value="1" required name="portions">
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Ingredience" required name="ingredients">
+                            <label>Katerogie jídla</label>
+                            <select class="form-select" name="category" name="category" required>
+                                <option selected>Vyberte kategorii</option>
+                                <option value="1">Hlavní jídla</option>
+                                <option value="2">Dezerty</option>
+                                <option value="3">Polévky</option>
+                              </select>
+                        </div>
+                        <label>Ingredience</label>
+                        <div class="mb-3" id="auto-fill-content1"> 
                         </div>
                         <div class="mb-3">
+                            <label>Nahrát fotografii</label>
                             <input type="file" class="form-control" required name="img" accept="image/*">
                         </div>
                         <div class="mb-3">
@@ -42,6 +54,7 @@
             </div>
         </div>
         <script src="main.js"></script>
+        <script src="formFieldManager.js"></script>
     </body>
 
 </html>
