@@ -5,9 +5,6 @@
  * @author David Konečný (xkonec83)
  */
 
-var refreshInterval = 5000;
-renderRecipes();
-
 async function getRecipes() {
 
     let url = 'recipe.json';
@@ -23,13 +20,17 @@ async function getRecipes() {
 async function renderRecipes() {
     // Event listeners for slow and fast render - David Konečný (xkonec83)
     const filter = document.getElementById("filter");
-    filter.addEventListener('focus', fastRender);
-    filter.addEventListener('blur', slowRender);
-
+    if(filter){
+        filter.addEventListener('focus', fastRender);
+        filter.addEventListener('blur', slowRender);    
+    }
+    
     //TODO ziskat informaci o stavu pole
     let recipes = await getRecipes();
     searchFor = "";
-    searchFor = document.getElementById('filter').value;
+    if(document.getElementById('filter') != null){
+        searchFor = document.getElementById('filter').value;
+    }
 
     // Search by filter - David Konečný (xkonec83)
     if (searchFor !== "")
@@ -67,12 +68,8 @@ async function renderRecipes() {
                             <div class="recipeCategory" id="${recipe.id}_recipeCategory">${recipe.category}</div>       
                             <button class="btn btn-dark invisibleButton" onclick="modalTrigger(${recipe.id})">Zobrazit podrobnosti</button>
                             <button class="btn btn-success invisibleButton" onclick="swapContent(${recipe.id})">Vařit</button>     
-                            </div>                
-                            <div class="ingredients" id="${recipe.id}_recipeCategory">`;
-        (recipe.ingredients).forEach(ingredient => {
-            htmlSegment += `<span class="col-sm-4 ingredient">${ingredient} </span>`;
-        });
-        htmlSegment += `</div><div class="ingredientPhoto">
+                            </div>`;
+        htmlSegment += `<div class="ingredientPhoto">
                     </div>
                     </div>`;
 
@@ -80,7 +77,9 @@ async function renderRecipes() {
     });
 
     let recipeContainer = document.querySelector('.recipeContainer');
-    recipeContainer.innerHTML = html;
+    if(recipeContainer != null){
+        recipeContainer.innerHTML = html;
+    }
 }
 
 function modalTrigger(id){
@@ -96,15 +95,17 @@ function modalTrigger(id){
     }
 
     if(id == -10){
-        var htmlContent = `<iframe src="createRecipe.html" class="formInModal" width="100%" height="400">`;
+        var htmlContent = `<iframe src="createRecipe.html" class="formInModal" style="position: absolute" width="100%" height="100%">`;
         document.getElementById("modalText").innerHTML = htmlContent;
     }
     else{
         newid = String(id);
         console.log(newid);
         var recipeID = "_recipeName";
-        console.log(document.getElementById(newid.concat(recipeID)).innerHTML);
-        document.getElementById("modalText").innerHTML = document.getElementById(newid.concat(recipeID)).innerHTML;
+        if(document.getElementById(newid.concat(recipeID)) != null){
+            console.log(document.getElementById(newid.concat(recipeID)).innerHTML);
+            document.getElementById("modalText").innerHTML = document.getElementById(newid.concat(recipeID)).innerHTML;
+        }
     }   
 }
 
@@ -143,7 +144,7 @@ function renderMe(recipeName){
 }
 function checkModal(){
     if(window.localStorage.getItem('closeModal') !== null){
-        modalTrigger(-1);
+        modalTrigger(-1);       
     }
 }
 var modal = document.getElementById("modal");
@@ -162,6 +163,13 @@ function slowRender()
     refreshInterval = 5000;
     slowRenderValid = setInterval(renderRecipes, 5000);
 }
+
+/**
+ * MAIN
+ */
+
+var refreshInterval = 5000;
+renderRecipes();
 
 var fastRenderValid = 0;
 var slowRenderValid = 0;
