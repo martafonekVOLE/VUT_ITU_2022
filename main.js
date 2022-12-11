@@ -18,7 +18,8 @@ async function getRecipes() {
 
 async function renderRecipes() {
 
-
+    //TODO renderRecipes > defaultní čas
+    //TODO ziskat informaci o stavu pole
     let recipes = await getRecipes();
     searchFor = "";
     searchFor = document.getElementById('filter').value;
@@ -140,5 +141,7 @@ function checkModal(){
 }
 var modal = document.getElementById("modal");
 //TODO refresh only when necessary  -> animations
+//TODO replace 4000 with var
+
 setInterval(renderRecipes, 4000);
 setInterval(checkModal, 500);
