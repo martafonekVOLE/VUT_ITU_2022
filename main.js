@@ -1,8 +1,12 @@
 /**
- * File: Main.js
+ * @file main.js
  * 
- * Author: Martin Pech (xpechm00)
+ * @author Martin Pech (xpechm00)
+ * @author David Konečný (xkonec83)
  */
+
+var refreshInterval = 5000;
+renderRecipes();
 
 async function getRecipes() {
 
@@ -17,14 +21,17 @@ async function getRecipes() {
 }
 
 async function renderRecipes() {
+    // Event listeners for slow and fast render - David Konečný (xkonec83)
+    const filter = document.getElementById("filter");
+    filter.addEventListener('focus', fastRender);
+    filter.addEventListener('blur', slowRender);
 
-    //TODO renderRecipes > defaultní čas
     //TODO ziskat informaci o stavu pole
     let recipes = await getRecipes();
     searchFor = "";
     searchFor = document.getElementById('filter').value;
 
-    // Search by filter
+    // Search by filter - David Konečný (xkonec83)
     if (searchFor !== "")
     {
         let unfilteredRecipes = recipes;
@@ -140,8 +147,24 @@ function checkModal(){
     }
 }
 var modal = document.getElementById("modal");
-//TODO refresh only when necessary  -> animations
-//TODO replace 4000 with var
 
-setInterval(renderRecipes, 4000);
+// Slow and fast render switching - David Konečný (xkonec83)
+function fastRender()
+{
+    clearInterval(slowRenderValid);
+    refreshInterval = 500;
+    fastRenderValid = setInterval(renderRecipes, 500);
+}
+
+function slowRender()
+{
+    clearInterval(fastRenderValid);
+    refreshInterval = 5000;
+    slowRenderValid = setInterval(renderRecipes, 5000);
+}
+
+var fastRenderValid = 0;
+var slowRenderValid = 0;
+
+slowRenderValid = setInterval(renderRecipes, refreshInterval);
 setInterval(checkModal, 500);
