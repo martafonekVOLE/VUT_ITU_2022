@@ -1,5 +1,7 @@
 <?php
-    ini_set('display_errors', 1);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
     if (isset($_POST['submitted']))
     {
@@ -37,13 +39,23 @@
 
         $j = 1;
         $ingredients = array();
+        $descs = array();
+
         
         foreach ($_POST as $key => $value)
         {
-            array_push($ingredients, $value);
+            $pattern = "/desc/i"; 
+            $pattern2 = "/ingredients/i"; 
+            if(preg_match($pattern, $key)){
+                array_push($descs, $value);
+            }
+            else if(preg_match($pattern2, $key)){
+                array_push($ingredients, $value);
+            }
         }
 
         $in = array();
+
 
         for ($x = 0; $x < count($ingredients); $x+=3)
         {
@@ -51,7 +63,6 @@
             {
                 break;
             }
-
             //$a["ingredient_$j"] = [$ingredients[$x], $ingredients[$x + 1], $ingredients[$x + 2]];
             array_push($in, [$ingredients[$x], $ingredients[$x + 1], $ingredients[$x + 2]]);
             
@@ -59,6 +70,25 @@
         }
 
         $a["ingredients"] = $in;
+        // array_push($a, $in);
+
+        $in = array();
+        $j = 1;
+
+
+        for ($x = 0; $x < count($descs); $x+=3)
+        {
+            if ($descs[$x] === "")
+            {
+                break;
+            }
+            //$a["ingredient_$j"] = [$ingredients[$x], $ingredients[$x + 1], $ingredients[$x + 2]];
+            array_push($in, [$descs[$x], $descs[$x + 1], $descs[$x + 2]]);
+            
+            $j++;
+        }
+
+        $a["insctructions"] = $in;
         // array_push($a, $in);
 
         $json_arr[] = $a;
