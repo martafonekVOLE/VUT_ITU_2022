@@ -108,7 +108,7 @@ function modalTrigger(id){
         document.getElementById("modalText").innerHTML = htmlContent;
     }
     else if(id == -20){
-        var htmlContent = `<iframe src="davidPHP" class="formInModal" style="position: absolute" width="100%" height="100%">`;
+        var htmlContent = `<iframe src="editJson2.php" class="formInModal" style="position: absolute" width="100%" height="100%">`;
         document.getElementById("modalText").innerHTML = htmlContent;
     }
     else{

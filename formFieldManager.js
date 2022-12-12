@@ -25,7 +25,7 @@ function checkContent(){
         newField += `<input type="text" class="col-sm-5" placeholder="Jméno ingredience" required name="ingredients${currNumber}1" id="ingredients${currNumber}1">`;
         newField += `<input type="number" class="col-sm-3" placeholder="Množství ingredience" required name="ingredients${currNumber}2" id="ingredients${currNumber}2">`;
         newField += `<input type="text" class="col-sm-3" placeholder="Jednotka" required name="ingredients${currNumber}3" id="ingredients${currNumber}3">`; //TODO replace dropdown
-        newField += `<span class="col-sm-1" onclick="removeIngredient(${currNumber})">&times;<span>`;
+        newField += `<span class="col-sm-1" onclick="removeIngredient(${currNumber})">&times;</span>`;
         newField += `</div>`;
         content.innerHTML = newField;
         window.localStorage.removeItem("currNumber");
@@ -46,7 +46,7 @@ function checkContent(){
         newField += `<input type="number" class="col-sm-3" placeholder="Množství" name="ingredients${currNumber}2" id="ingredients${currNumber}2">`;
         newField += `<input type="text" class="col-sm-3" placeholder="Jednotka" name="ingredients${currNumber}3" id="ingredients${currNumber}3">`;
          //TODO replace dropdown
-        newField += `<span class="col-sm-1" onclick="removeIngredient(${currNumber})">&times;<span></div>`;
+        newField += `<span class="col-sm-1" onclick="removeIngredient(${currNumber})">&times;</span></div>`;
         content.innerHTML += newField;
         window.localStorage.removeItem("currNumber");
         var nextNumber = currNumber+1;
@@ -84,7 +84,7 @@ function checkDesc(){
             newField += `<input type="text" class="col-sm-5" placeholder="Název kroku" required name="desc${currDesc}1" id="desc${currDesc}1">`;
             newField += `<input type="text" class="col-sm-3" placeholder="Popis" required name="desc${currDesc}2" id="desc${currDesc}2">`;
             newField += `<input type="text" class="col-sm-3" placeholder="Čas provádění (v minutách)" name="desc${currDesc}3" id="desc${currDesc}3">`; //TODO replace dropdown
-            newField += `<span class="col-sm-1" onclick="removeIngredient(${currDesc})">&times;<span>`;
+            newField += `<span class="col-sm-1" onclick="removeIngredient(${currDesc})">&times;</span>`;
             newField += `</div>`;
             content.innerHTML = newField;
             window.localStorage.removeItem("currDesc");
@@ -107,7 +107,7 @@ function checkDesc(){
         newField += `<input type="text" class="col-sm-3" placeholder="Popis" name="desc${currDesc}2" id="desc${currDesc}2">`;
         newField += `<input type="text" class="col-sm-3" placeholder="Čas provádění (v minutách)" name="desc${currDesc}3" id="desc${currDesc}3">`;
          //TODO replace dropdown
-        newField += `<span class="col-sm-1" onclick="removeDesc(${currDesc})">&times;<span></div>`;
+        newField += `<span class="col-sm-1" onclick="removeDesc(${currDesc})">&times;</span></div>`;
         content.innerHTML += newField;
         window.localStorage.removeItem("currDesc");
         var nextNumber = currDesc+1;
@@ -119,6 +119,7 @@ function checkDesc(){
 
 
 function removeIngredient(ingNumber){
+    console.log(ingNumber);
     if(ingNumber == 1){
         alert("Recept musí obsahovat alespoň jednu inkredienci!");
     }
