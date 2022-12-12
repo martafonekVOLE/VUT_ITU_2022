@@ -109,7 +109,7 @@ function modalTrigger(id){
     }   
 }
 
-function swapContent(id){
+async function swapContent(id){
     newid = String(id);
     console.log(newid);
     var recipeID = "_recipeName";
@@ -132,16 +132,13 @@ function swapContent(id){
         document.getElementById("mainContent2").classList.add('recipeContent');
         document.getElementById("mainContent2").style.display = 'block';
 
-        document.querySelector('.recipeContent').innerHTML = renderMe(recipeName); 
+        document.querySelector('.recipeContent').innerHTML = await renderRecipe(id);
         
         //Possibility: 
         //Pass args to another functions that fills HTML form - this then prints
     }
 }
 
-function renderMe(recipeName){
-    return ("HELLO" + recipeName);
-}
 function checkModal(){
     if(window.localStorage.getItem('closeModal') !== null){
         modalTrigger(-1);       
@@ -176,3 +173,7 @@ var slowRenderValid = 0;
 
 slowRenderValid = setInterval(renderRecipes, refreshInterval);
 setInterval(checkModal, 500);
+
+
+
+

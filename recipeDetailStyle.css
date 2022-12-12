@@ -1,0 +1,487 @@
+/* Recipe detail page */
+
+.ingredient-container{
+    display: flex;
+    background: #1b1920;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin: 4em;
+    border-radius: 2em;
+    min-height: 10em;
+    margin-bottom: 4em;
+}
+
+.ingredient-item{
+    background: #3b3b3d;
+    margin: 1em;
+    border-radius: 1em;
+    max-height: 4em;
+    padding: 1em;
+    max-width: 10em;
+    min-width: 5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 5px grey;
+    transition: 0.2s;
+}
+
+.ingredient-item:hover{
+    box-shadow: 2px 2px 5px darkslateblue;
+}
+
+.timer{
+    padding: 20px;
+    border-color: black;
+    border-width: 5px;
+    background: #a4e3a4;
+    fill-opacity: 0.5;
+    border-radius: 10px;
+    color: black;
+    margin: 1em;
+    box-shadow: 5px 5px 10px black;
+}
+
+.timer_container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    margin-left: 20px;
+    max-width: 300px;
+}
+
+.timer_quit_button{
+    background: pink;
+    padding: 3px;
+    margin: 3px;
+    border-radius: 8px;
+}
+
+.recipe-detail{
+    color: white;
+    background: #3b3b3d;
+    width: 100%;
+}
+
+
+.timer-icon:hover{
+    /* TODO on hover -> tooltip */
+}
+
+.timer-icon{
+    height: 2em;
+}
+
+.timer_loader{
+    background: blue;
+    height: 1em;
+    width: 0;
+}
+
+.timer-wrap{
+    display: block;
+    width: 2em;
+}
+
+.step{
+    display: flex;
+    justify-content: left;
+    background: #1b1920;
+    padding: 3em;
+    margin: 3em;
+    border-radius: 2em;
+    box-shadow: 20px 20px 50px dimgray;
+}
+
+.step-description-visible{
+    visibility: visible;
+    transition: 0.2s;
+}
+
+.step-description-hidden{
+    display: none;
+    transition: 0.2s;
+}
+
+.step-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 2em;
+}
+
+.timer-wrap{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 8em;
+    background: #a4e3a4;
+    border-radius: 1em;
+    transition: 0.2s;
+    color: #1b1920;
+    box-shadow: 2px 2px 2px dimgrey;
+    margin: 1em;
+}
+
+.timer-wrap:hover{
+    background: limegreen;
+    cursor: pointer;
+    color: white;
+    fill: white;
+}
+/* Recipe detail page */
+
+.ingredient-container{
+    display: flex;
+    background: #1b1920;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 2em;
+    min-height: 10em;
+}
+
+.ingredient-item{
+    background: #3b3b3d;
+    margin: 1em;
+    border-radius: 1em;
+    max-height: 4em;
+    padding: 1em;
+    max-width: 10em;
+    min-width: 5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 5px grey;
+    transition: 0.2s;
+}
+
+.ingredient-item:hover{
+    box-shadow: 2px 2px 5px darkslateblue;
+}
+
+.timer{
+    padding: 20px;
+    border-color: black;
+    border-width: 5px;
+    background: #a4e3a4;
+    fill-opacity: 0.5;
+    border-radius: 10px;
+    color: black;
+    margin: 1em;
+    box-shadow: 5px 5px 10px black;
+}
+
+.timer_container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    margin-left: 20px;
+    max-width: 300px;
+}
+
+.timer_quit_button{
+    background: pink;
+    padding: 3px;
+    margin: 3px;
+    border-radius: 8px;
+}
+
+.recipe-detail{
+    color: white;
+    background: transparent;
+    width: 100%;
+}
+
+
+.timer-icon:hover{
+/* TODO on hover -> tooltip */
+}
+
+.timer-icon{
+    height: 2em;
+}
+
+.timer_loader{
+    background: blue;
+    height: 1em;
+    width: 0;
+}
+
+.timer-wrap{
+    display: block;
+    width: 2em;
+}
+
+.step{
+    display: flex;
+    justify-content: left;
+    background: #1b1920;
+    padding: 3em;
+    margin: 3em;
+    border-radius: 2em;
+    box-shadow: 20px 20px 50px dimgray;
+}
+
+.step-description-visible{
+    visibility: visible;
+}
+
+.step-description-hidden{
+    display: none;
+}
+
+.step-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 2em;
+}
+
+.timer-wrap{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 8em;
+    background: #a4e3a4;
+    border-radius: 1em;
+    transition: 0.2s;
+    color: #1b1920;
+    box-shadow: 2px 2px 2px dimgrey;
+    margin: 1em;
+}
+
+.timer-wrap:hover{
+    background: black;
+    cursor: pointer;
+    color: white;
+    fill: white;
+}
+
+.timer-text{
+    font-size: 2em;
+    margin: 0;
+}
+
+
+.step-radio-container{
+    margin-top: 40px;
+    margin-right: 30px;
+    height: auto;
+
+}
+
+
+/* Checkmark & radio for ingredients */
+.ingredient-radio-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ingredient-radio-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.ingredient-radio-checkmark {
+    border-radius: 3px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+.ingredient-radio-container:hover input ~ .ingredient-radio-checkmark {
+    background-color: #ccc;
+}
+
+.ingredient-radio-container input:checked ~ .ingredient-radio-checkmark {
+    background-color: #2196F3;
+}
+
+.ingredient-radio-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.ingredient-radio-container input:checked ~ .ingredient-radio-checkmark:after {
+    display: block;
+}
+
+.ingredient-radio-container .ingredient-radio-checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.portion-picker-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 4em;
+    background: #1b1920;
+
+}
+
+.form-range{
+    width: 50%;
+    margin-bottom: 1em;
+}
+
+.steps-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1em;
+}
+
+h1{
+    font-size: 2em;
+    margin: 0;
+    text-align: center;
+    color: black;
+}
+
+h2{
+    font-size: 1.5em;
+    margin: 0;
+    text-align: center;
+    color: black;
+}
+
+h3{
+    font-size: 1.2em;
+    margin: 0;
+    text-align: center;
+}
+
+.timer-text{
+    font-size: 2em;
+    margin: 0;
+}
+
+.step-radio-container{
+    height: auto;
+    margin-top: 40px;
+    margin-right: 30px;
+}
+
+/* Checkmark & radio for ingredients */
+.ingredient-radio-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ingredient-radio-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.ingredient-radio-checkmark {
+    border-radius: 3px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+.ingredient-radio-container:hover input ~ .ingredient-radio-checkmark {
+    background-color: #ccc;
+}
+
+.ingredient-radio-container input:checked ~ .ingredient-radio-checkmark {
+    background-color: #2196F3;
+}
+
+.ingredient-radio-checkmark:after {
+    content: "";.timeline{
+    width: 1px;
+    background: white;
+    height: inherit;
+    border: 3px solid white;
+    border-radius: 10px;
+    margin-left: 2em;
+}
+    position: absolute;
+    display: none;
+}
+
+.ingredient-radio-container input:checked ~ .ingredient-radio-checkmark:after {
+    display: block;
+}
+
+.ingredient-radio-container .ingredient-radio-checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.portion-picker-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #1b1920;
+    border-radius: 2em;
+}
+
+.form-range{
+    width: 70%;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.steps-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1em;
+}
+
+.step-name{
+    color: white; !important;
+}
+
+
+.portion-count{
+    color:white;
+    font-size: 2em;
+}
+
