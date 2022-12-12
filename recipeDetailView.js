@@ -46,11 +46,21 @@ function generateIngredientDiv(name, amount, unit) {
     return `        
             <div class="ingredient-item">
                 <label class="ingredient-radio-container">${name} 
-                  <input type="checkbox">
+                  <input class="ingredient-checkbox" type="checkbox" onchange="finishIngredientPicking()">
                   <span class="ingredient-radio-checkmark"></span>
                 </label>
             </div>
     `
+}
+
+function finishIngredientPicking() {
+    let ingredientChecks = document.getElementsByClassName("ingredient-checkbox");
+    console.log(ingredientChecks);
+    ingredientChecks.forEach((check) => {
+        if (!check.checked) {
+            return;
+        }
+    });
 }
 
 function setStepAsDone(step, id) {
@@ -84,7 +94,7 @@ function generateStepDiv(id, name, description, time) {
     //set up timer, if the step has a valid duration value for timing
     if (time > 0) {
         htmlSegment += `
-            <div class="timer-wrap" onclick="getNewTimer(${id}, ${time}, '${name}')">
+            <div id="timer_wrap_${id}" class="timer-wrap" onclick="getNewTimer(${id}, ${time}, '${name}')">
             <p class="timer-text">${time}m</p>
             <svg class="timer-icon"  width="3em" height="3em"  version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 296.228 296.228" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 296.228 296.228">
               <g>
@@ -148,10 +158,11 @@ async function renderRecipe(recipeId) {
 
 
 function getNewTimer(id, minutes, name) {
-    console.log("Timer called on " + id);
     if(document.getElementById("timer_" + id)){
         return;
     }
+    let sourceButton = document.getElementById("timer_wrap_" + id);
+    sourceButton.style.background = "#f6aeae";
 
     //create timer wrap
     const newTimer = document.createElement("div");
@@ -163,16 +174,20 @@ function getNewTimer(id, minutes, name) {
     const quitButton = document.createElement("button");
     quitButton.textContent = "Ukončit";
     quitButton.addEventListener('click', () => {
+        sourceButton.style.background = "#a4e3a4";
         quitButton.parentElement.parentElement.removeChild(newTimer);
         clearTimeout(downloadTimer)
     });
     quitButton.classList.add("timer_quit_button");
-    newTimer.appendChild(quitButton);
 
+
+    const loaderWrap = document.createElement("div");
+    loaderWrap.classList.add("loader-wrap");
     const loader = document.createElement("div");
     loader.id = "loader_" + id;
     loader.classList.add("timer_loader");
-    newTimer.appendChild(loader);
+    loaderWrap.appendChild(loader);
+    newTimer.appendChild(loaderWrap);
 
     const timerRemaining = document.createElement("div");
     timerRemaining.classList.add("timer_remaining");
@@ -188,25 +203,27 @@ function getNewTimer(id, minutes, name) {
     parentElement.appendChild(newTimer);
 
     let seconds = 0;
+    let minutes_original = minutes;
     const downloadTimer = setInterval(function function1(){
         let loaderRef = document.getElementById("loader_" + id);
-        document.getElementById("timer_remaining_" + id).innerHTML = minutes + ":" + seconds + " left";
+        document.getElementById("timer_remaining_" + id).innerHTML = minutes + ":" + seconds + " zbývá";
         if(seconds === 0){
             minutes--;
             seconds+=60;
         }
         seconds--;
 
-        loaderRef.style.width = parseInt(minutes)/100 + "%";
+        loaderRef.style.width = ((parseInt(minutes) + parseInt(seconds)/60)/parseInt(minutes_original)*100 + "%");
 
         let timerParent;
-        if (minutes <= 0) {
+        if (minutes <= 0 && seconds <= 0) {
             clearInterval(downloadTimer);
-            timerParent = document.getElementById("timer_remaining");
-            timerParent.innerHTML = "Time is up!";
+            timerParent = document.getElementById("timer_remaining_" + id);
+            timerParent.innerHTML = "Hotovo!";
             timerParent.parentElement.style.background = "#ea9292";
             const audio = new Audio('ding.wav');
             audio.play();
         }
     }, 1000);
+    newTimer.appendChild(quitButton);
 }

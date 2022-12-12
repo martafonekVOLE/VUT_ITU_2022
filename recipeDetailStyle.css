@@ -141,6 +141,7 @@
     color: white;
     border-radius: 2em;
     min-height: 10em;
+    box-shadow: 20px 20px 50px dimgray;
 }
 
 .ingredient-item{
@@ -205,9 +206,17 @@
 }
 
 .timer_loader{
-    background: blue;
+    background: #3b3b3d;
     height: 1em;
-    width: 0;
+    width: 100%;
+    border-radius: 5px;
+    border: #1b1920 2px solid;
+    transition: 1s linear;
+}
+
+.loader-wrap{
+    border: #1b1920 solid 3px;
+    border-radius: 7px;
 }
 
 .timer-wrap{
