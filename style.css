@@ -114,7 +114,9 @@
     border-color: black;
     border-width: 5px;
     background: #a4e3a4;
+    fill-opacity: 0.5;
     border-radius: 10px;
+    color: black;
     margin: 1em;
     box-shadow: 5px 5px 10px black;
 }
@@ -140,13 +142,13 @@
     width: 100%;
 }
 
-.timer-icon{
-    color: white;
-}
 
 .timer-icon:hover{
 /* TODO on hover -> tooltip */
-    color: wheat;
+}
+
+.timer-icon{
+    height: 2em;
 }
 
 .timer_loader{
@@ -155,19 +157,70 @@
     width: 0px;
 }
 
+.timer-wrap{
+    display: block;
+    width: 2em;
+}
+
 .step{
+    display: flex;
+    justify-content: left;
     background: #1b1920;
-    padding: 8em;
-    margin: 8em;
+    padding: 3em;
+    margin: 3em;
     border-radius: 2em;
     box-shadow: 20px 20px 50px dimgray;
 }
 
-.step-contents{
-    display: flex;
-    justify-content: center;
+.step-description-visible{
+    visibility: visible;
 }
 
+.step-description-hidden{
+    display: none;
+}
+
+.step-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 2em;
+}
+
+.timer-wrap{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 8em;
+    background: #a4e3a4;
+    border-radius: 1em;
+    transition: 0.2s;
+    color: #1b1920;
+    box-shadow: 2px 2px 2px dimgrey;
+    margin: 1em;
+}
+
+.timer-wrap:hover{
+    background: black
+    cursor: pointer;
+    color: white;
+    fill: white;
+}
+
+.timer-text{
+    font-size: 2em;
+    margin: 0;
+}
+
+
+.step-radio-container{
+    margin-right: 1em;
+    margin-top: 40px;
+    height: auto;
+    margin-right: 30px;
+
+}
 
 
 /* Checkmark & radio for ingredients */
@@ -231,4 +284,49 @@
     transform: rotate(45deg);
 }
 
+.portion-picker-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+}
 
+.form-range{
+    width: 50%;
+    margin-bottom: 1em;
+}
+
+.steps-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1em;
+}
+
+h1{
+    font-size: 2em;
+    margin: 0;
+    text-align: center;
+}
+
+h2{
+    font-size: 1.5em;
+    margin: 0;
+    text-align: center;
+}
+
+h3{
+    font-size: 1.2em;
+    margin: 0;
+    text-align: center;
+}
+
+.timeline{
+    width: 1px;
+    background: white;
+    height: inherit;
+    border: 3px solid white;
+    border-radius: 10px;
+    margin-left: 2em;
+}
