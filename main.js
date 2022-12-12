@@ -24,8 +24,8 @@ async function renderRecipes() {
         filter.addEventListener('focus', fastRender);
         filter.addEventListener('blur', slowRender);    
     }
-    
-    //TODO ziskat informaci o stavu pole
+    // --- END
+
     let recipes = await getRecipes();
     searchFor = "";
     if(document.getElementById('filter') != null){
@@ -58,7 +58,7 @@ async function renderRecipes() {
             i++;
         });
     }
-
+    // --- END
     
     let html = '';
     recipes.forEach(recipe => {
@@ -67,7 +67,9 @@ async function renderRecipes() {
                             <h2 class="recipeName" id="${recipe.id}_recipeName">${recipe.name}</h2>
                             <div class="recipeCategory" id="${recipe.id}_recipeCategory">${recipe.category}</div>       
                             <button class="btn btn-dark invisibleButton" onclick="modalTrigger(${recipe.id})">Zobrazit podrobnosti</button>
-                            <button class="btn btn-success invisibleButton" onclick="swapContent(${recipe.id})">Vařit</button>     
+                            <button class="btn btn-success invisibleButton" onclick="swapContent(${recipe.id})">Vařit</button>   
+                            <button class="btn btn-success invisibleButton" onclick="setCookie(${recipe.id})">Edit</button>     
+
                             </div>`;
         htmlSegment += `<div class="ingredientPhoto">
                     </div>
@@ -80,6 +82,13 @@ async function renderRecipes() {
     if(recipeContainer != null){
         recipeContainer.innerHTML = html;
     }
+}
+
+function setCookie(id){
+    var now = new Date();
+    now.setTime(now.getTime() + (10000));
+    document.cookie = `id=${id}; expires=${now}`;
+    modalTrigger(-20);
 }
 
 function modalTrigger(id){
@@ -96,6 +105,10 @@ function modalTrigger(id){
 
     if(id == -10){
         var htmlContent = `<iframe src="createRecipe.html" class="formInModal" style="position: absolute" width="100%" height="100%">`;
+        document.getElementById("modalText").innerHTML = htmlContent;
+    }
+    else if(id == -20){
+        var htmlContent = `<iframe src="davidPHP" class="formInModal" style="position: absolute" width="100%" height="100%">`;
         document.getElementById("modalText").innerHTML = htmlContent;
     }
     else{
@@ -160,10 +173,8 @@ function slowRender()
     refreshInterval = 5000;
     slowRenderValid = setInterval(renderRecipes, 5000);
 }
+// --- END
 
-/**
- * MAIN
- */
 
 var refreshInterval = 5000;
 renderRecipes();
