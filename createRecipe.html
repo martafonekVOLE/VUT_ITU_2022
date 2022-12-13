@@ -8,7 +8,7 @@
         <link href="custom.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     </head>
-    <body class="bg-light">
+    <body class="bg-light" style="overflow-y: hidden;">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12" >
@@ -21,26 +21,45 @@
                 <div class="col-sm-12">
                     <form method="post" action="editJson.php">
                         <div class="mb-3">
+                            <label>Název pokrmu</label>
                             <input type="text" class="form-control" placeholder="Název" required name="name">
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Kategorie" required name="category">
+                            <label>Počet porcí</label>
+                            <input type="number" class="form-control" placeholder="Počet porcí" value="1" required name="portions">
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Ingredience" required name="ingredients">
+                            <label>Katerogie jídla</label>
+                            <select class="form-select" name="category" name="category" required>
+                                <option selected>Vyberte kategorii</option>
+                                <option value="Hlavní jídla">Hlavní jídla</option>
+                                <option value="Dezerty">Dezerty</option>
+                                <option value="Polévky">Polévky</option>
+                                <option value="Přílohy">Přílohy</option>
+                                <option value="Saláty">Saláty</option>
+                              </select>
+                        </div>
+                        <label>Ingredience</label>
+                        <div class="mb-3" id="auto-fill-content1"> 
+                        </div>
+                        <label>Postup</label>
+                        <div class="mb-3" id="auto-fill-desc1"> 
                         </div>
                         <div class="mb-3">
+                            <label>Nahrát fotografii</label>
                             <input type="file" class="form-control" required name="img" accept="image/*">
                         </div>
                         <div class="mb-3">
                             <!-- <input type="submit" name="submitted"> -->
-                            <button type="submit" class="btn btn-primary" name="submitted">Vytvořit</button>
+                            <button type="submit" class="btn btn-primary"  name="submitted">Vytvořit</button>
                         </div>
                     </form>
                 </div>
                 <div class="col"></div>
             </div>
         </div>
+        <script src="main.js"></script>
+        <script src="formFieldManager.js"></script>
     </body>
 
 </html>

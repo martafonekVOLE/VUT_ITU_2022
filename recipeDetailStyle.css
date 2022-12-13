@@ -1,0 +1,515 @@
+/*
+ file recipeDetailView.css
+ author Matěj Konopík (xkonop03@vutbr.cz)
+ brief This file contains styles for rendering recipe detail view
+ version 1.0
+ date 2022-11-15
+*/
+
+
+.ingredient-container {
+    display: flex;
+    background: #1b1920;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin: 1em 4em 4em 4em;
+    border-radius: 2em;
+    min-height: 10em;
+}
+
+.ingredient-item:hover {
+    box-shadow: 2px 2px 5px black;
+}
+
+.timer {
+    padding: 20px;
+    border-color: black;
+    border-width: 5px;
+    background: rgba(238, 225, 147, 0.89);
+    fill-opacity: 0.5;
+    border-radius: 10px;
+    color: black;
+    margin: 1em;
+    box-shadow: 5px 5px 10px black;
+}
+
+.timer_container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    margin-left: 20px;
+    max-width: 300px;
+}
+
+.timer_quit_button {
+    background: pink;
+    padding: 3px;
+    margin: 3px;
+    border-radius: 8px;
+}
+
+.recipe-detail {
+    color: white;
+    background: #3b3b3d;
+    width: 100%;
+}
+
+
+.timer-icon:hover {
+    /* TODO on hover -> tooltip */
+}
+
+.timer-icon {
+    height: 2em;
+}
+
+.timer_loader {
+    background: blue;
+    height: 1em;
+    width: 0;
+}
+
+.timer-wrap {
+    display: block;
+    width: 2em;
+}
+
+.step {
+    display: flex;
+    justify-content: left;
+    background: #1b1920;
+    padding: 3em;
+    margin: 1em 3em 3em 3em;
+    border-radius: 2em;
+    box-shadow: 20px 20px 50px dimgray;
+}
+
+.step-description-visible {
+    visibility: visible;
+    transition: 0.2s;
+}
+
+.step-description-hidden {
+    display: none;
+    transition: 0.2s;
+}
+
+.step-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 2em;
+}
+
+.timer-wrap:hover {
+    cursor: pointer;
+    color: white;
+    fill: white;
+}
+
+/* Recipe detail page */
+
+.ingredient-container {
+    display: flex;
+    flex-wrap: wrap;
+    background: #1b1920;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 2em;
+    min-height: 10em;
+    padding: 2em;
+    box-shadow: 20px 20px 50px dimgray;
+    transition: 0.2s;
+}
+
+.ingredient-item {
+    background: #3b3b3d;
+    margin: 1em;
+    border-radius: 1em;
+    padding: 1em;
+    max-width: 10em;
+    min-width: 5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 5px grey;
+    transition: 0.2s;
+}
+
+.ingredient-item:hover {
+    box-shadow: 2px 2px 5px #2196f3;
+}
+
+.timer {
+    padding: 20px;
+    border-color: black;
+    border-width: 5px;
+    background: rgba(238, 225, 147, 0.89);
+    fill-opacity: 0.5;
+    border-radius: 10px;
+    color: black;
+    margin: 1em;
+    box-shadow: 5px 5px 10px black;
+}
+
+.timer_container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    margin-left: 20px;
+    max-width: 300px;
+}
+
+.timer_quit_button {
+    background: pink;
+    padding: 3px;
+    margin: 3px;
+    border-radius: 8px;
+}
+
+.recipe-detail {
+    color: white;
+    background: transparent;
+    width: 100%;
+}
+
+
+.timer-icon:hover {
+    /* TODO on hover -> tooltip */
+}
+
+.timer-icon {
+    height: 2em;
+}
+
+.timer_loader {
+    background: #3b3b3d;
+    height: 1em;
+    width: 100%;
+    border-radius: 5px;
+    border: #1b1920 2px solid;
+    transition: 1s linear;
+}
+
+.loader-wrap {
+    border: #1b1920 solid 3px;
+    border-radius: 7px;
+}
+
+.timer-wrap {
+    display: block;
+    width: 2em;
+}
+
+
+.step-description-visible {
+    visibility: visible;
+}
+
+.step-description-hidden {
+    display: none;
+}
+
+.step-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 2em;
+}
+
+.step-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer-wrap {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 8em;
+    background: #a4e3a4;
+    border-radius: 1em;
+    transition: 0.2s;
+    color: #1b1920;
+    box-shadow: 2px 2px 2px dimgrey;
+    margin: 1em;
+}
+
+.ingredient-amount {
+    color: slategray;
+    transition: 0.2s;
+}
+
+.ingredient-unit {
+    color: slategray;
+    transition: 0.2s;
+}
+
+.timer-text {
+    font-size: 2em;
+    margin: 0;
+}
+
+
+.step-radio-container {
+    margin-top: 40px;
+    margin-right: 30px;
+    height: auto;
+
+}
+
+
+/* Checkmark & radio for ingredients */
+.ingredient-radio-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ingredient-radio-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.ingredient-radio-checkmark {
+    border-radius: 3px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+.ingredient-radio-container:hover input ~ .ingredient-radio-checkmark {
+    background-color: #ccc;
+}
+
+.ingredient-radio-container input:checked ~ .ingredient-radio-checkmark {
+    background-color: #2196F3;
+}
+
+.ingredient-radio-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.ingredient-radio-container input:checked ~ .ingredient-radio-checkmark:after {
+    display: block;
+}
+
+.ingredient-radio-container .ingredient-radio-checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.portion-picker-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1em 4em 4em 4em;
+    background: #1b1920;
+    border-radius: 2em;
+    box-shadow: 20px 20px 50px dimgray;
+    padding: 2em;
+}
+
+.form-range {
+    width: 50%;
+    margin-bottom: 1em;
+}
+
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1em;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0;
+    text-align: center;
+    color: black;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin: 0;
+    text-align: center;
+    color: white;
+}
+
+h3 {
+    font-size: 1.2em;
+    margin: 0;
+    text-align: center;
+}
+
+.timer-text {
+    font-size: 2em;
+    margin: 0;
+}
+
+.step-radio-container {
+    height: auto;
+    margin-top: 40px;
+    margin-right: 30px;
+}
+
+/* Checkmark & radio for ingredients */
+.ingredient-radio-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ingredient-radio-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.ingredient-radio-checkmark {
+    border-radius: 3px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+.ingredient-radio-container:hover input ~ .ingredient-radio-checkmark {
+    background-color: #ccc;
+}
+
+.ingredient-radio-container input:checked ~ .ingredient-radio-checkmark {
+    background-color: #2196F3;
+}
+
+.ingredient-radio-checkmark:after {
+    content: "";
+}
+
+.ingredient-radio-container input:checked ~ .ingredient-radio-checkmark:after {
+    display: block;
+}
+
+.ingredient-radio-container .ingredient-radio-checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+
+.form-range {
+    width: 70%;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1em;
+}
+
+.step-content {
+    width: available;
+}
+
+.recipe-footer{
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #8c8c8c;
+    border-radius: 2em 2em 0 0;
+    transition: 0.2s;
+    margin: 4em 4em 0em 4em;
+}
+
+.recipe-button-home, .recipe-button-home-ready{
+    padding: 1em;
+    border-radius: 1em;
+    text-align: center;
+    margin: 1em;
+    background: #f6aeae;
+    color: black;
+    font-size: medium;
+    transition: 0.2s;
+}
+
+.recipe-button-restart{
+    padding: 1em;
+    border-radius: 1em;
+    text-align: center;
+    margin: 1em;
+    background: #f6aeae;
+    color: black;
+    font-size: medium;
+    transition: 0.2s;
+}
+
+.recipe-button-home:hover{
+    background: #ea9292;
+}
+
+.recipe-button-restart:hover{
+    background: #ea9292;
+}
+
+.recipe-button-home-ready:hover{
+    background: #6bab6b;
+}
+
+.recipe-header{
+    border-radius: 0 0 2em 2em;
+    box-shadow: 20px 20px 50px dimgray;
+    background: #8c8c8c;
+    display: flex;
+    position: sticky;
+    top: 0;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 4em 6em 4em;
+    padding: 2em;
+}
+
+
