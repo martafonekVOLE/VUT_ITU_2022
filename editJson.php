@@ -125,7 +125,9 @@ error_reporting(E_ALL);
             // array_push($a, $in);
 
             $json_arr[] = $a;
+
             file_put_contents('recipe.json', json_encode($json_arr));
+            setcookie('id_favourite'.$maxID, $maxID, time()+3600*24*365);
         }
         catch(Exception $e)
         {

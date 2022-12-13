@@ -18,6 +18,9 @@ async function getRecipes() {
 }
 
 async function renderRecipes(option = 0) {
+    if(tokenMyRecipes == true){
+        option = 1;
+    }
     // Event listeners for slow and fast render - David Konečný (xkonec83)
     const filter = document.getElementById("filter");
     if(filter){
@@ -32,6 +35,18 @@ async function renderRecipes(option = 0) {
         searchFor = document.getElementById('filter').value;
     }
 
+    var cookies = [];
+    if (document.cookie && document.cookie != '')
+    {
+        var split = document.cookie.split(';');
+        for (var i = 0; i < split.length; i++)
+        {
+            var name_value = split[i].split("=");
+            name_value[0] = name_value[0].replace(/^ /, '');
+            cookies[decodeURIComponent(name_value[0])] = decodeURIComponent(name_value[1]);
+        }
+    }
+    
     // Search by filter - David Konečný (xkonec83)
     if (searchFor !== "")
     {
@@ -42,18 +57,6 @@ async function renderRecipes(option = 0) {
         let regex = new RegExp(expression, 'igu');
 
         i = 0;
-
-        var cookies = [];
-        if (document.cookie && document.cookie != '')
-        {
-            var split = document.cookie.split(';');
-            for (var i = 0; i < split.length; i++)
-            {
-                var name_value = split[i].split("=");
-                name_value[0] = name_value[0].replace(/^ /, '');
-                cookies[decodeURIComponent(name_value[0])] = decodeURIComponent(name_value[1]);
-            }
-        }
 
         unfilteredRecipes.forEach(unfilteredRecipe => {
 
@@ -91,22 +94,62 @@ async function renderRecipes(option = 0) {
     // --- END
     
     let html = '';
+    if(option == 1){
     recipes.forEach(recipe => {
-        let htmlSegment = `<div class="recipe" style="background: url('${recipe.photo}'); background-size: cover;" id="${recipe.id}">
-                            <div class="nameSection">
-                            <h2 class="recipeName" id="${recipe.id}_recipeName">${recipe.name}</h2>
-                            <div class="recipeCategory" id="${recipe.id}_recipeCategory">${recipe.category}</div>       
-                            <button class="btn btn-dark invisibleButton" onclick="modalTrigger(${recipe.id})">Zobrazit podrobnosti</button>
-                            <button class="btn btn-success invisibleButton" onclick="swapContent(${recipe.id})">Vařit</button>   
-                            <button class="btn btn-success invisibleButton" onclick="setCookie(${recipe.id})">Edit</button>     
-                            <button class="btn btn-success invisibleButton" onclick="setCookieFavourite(${recipe.id})">Like</button>
-                            </div>`;
-        htmlSegment += `<div class="ingredientPhoto">
-                    </div>
-                    </div>`;
+        //if -> cookie vs recipe.id -> if true zobraz, if false nezobraz
+        for (var key in cookies)
+        {
+             if (cookies[key] == recipe.id)
+             {
+                var htmlSegment = `<div class="recipe" style="background: url('${recipe.photo}'); background-size: cover;" id="${recipe.id}">
+                <div class="nameSection">
+                <h2 class="recipeName" id="${recipe.id}_recipeName">${recipe.name}</h2>
+                <div class="recipeCategory" id="${recipe.id}_recipeCategory">${recipe.category}</div>       
+                <button class="btn btn-dark invisibleButton" onclick="modalTrigger(${recipe.id})">Zobrazit podrobnosti</button>
+                <button class="btn btn-success invisibleButton" onclick="swapContent(${recipe.id})">Vařit</button>   
+                <button class="btn btn-success invisibleButton" onclick="setCookie(${recipe.id})">Edit</button>     
+                <button class="btn btn-success invisibleButton" onclick="unsetCookieFavourite(${recipe.id})">Unlike</button>
+                </div>`;
+                htmlSegment += `<div class="ingredientPhoto">
+                </div>
+                </div>`;
+                html += htmlSegment;
+            }
+            else{
+            }
 
-        html += htmlSegment;
+        }
     });
+    }
+    else{
+        recipes.forEach(recipe => {
+            //if -> cookie vs recipe.id -> if true zobraz, if false nezobraz
+                    let htmlSegment = `<div class="recipe" style="background: url('${recipe.photo}'); background-size: cover;" id="${recipe.id}">
+                    <div class="nameSection">
+                    <h2 class="recipeName" id="${recipe.id}_recipeName">${recipe.name}</h2>
+                    <div class="recipeCategory" id="${recipe.id}_recipeCategory">${recipe.category}</div>       
+                    <button class="btn btn-dark invisibleButton" onclick="modalTrigger(${recipe.id})">Zobrazit podrobnosti</button>
+                    <button class="btn btn-success invisibleButton" onclick="swapContent(${recipe.id})">Vařit</button>   
+                    <button class="btn btn-success invisibleButton" onclick="setCookie(${recipe.id})">Edit</button>`
+                    var tokenReady = false;
+                    for (var key in cookies){
+                        if(cookies[key] == recipe.id){
+                            tokenReady = true;
+                        }
+                    }
+
+                    if(!tokenReady){
+                        htmlSegment += `<button class="btn btn-success invisibleButton" onclick="setCookieFavourite(${recipe.id})">Like</button>`;
+                    }     
+                    else{
+                        htmlSegment += `<button class="btn btn-success invisibleButton" onclick="unsetCookieFavourite(${recipe.id})">Unlike</button>`;
+                    }
+
+                    htmlSegment += `</div><div class="ingredientPhoto"></div></div>`;
+
+            html += htmlSegment;
+        });
+    }
 
     let recipeContainer = document.querySelector('.recipeContainer');
     if(recipeContainer != null){
@@ -123,7 +166,16 @@ function setCookie(id){
 
 function setCookieFavourite(id)
 {
-    document.cookie = `id_favourite${id}=${id}`;
+    var now = new Date();
+    now.setTime(now.getTime() + (1000*60*60*24*365));
+    document.cookie = `id_favourite${id}=${id}; expires=${now}`;
+    renderRecipes();
+}
+function unsetCookieFavourite(id)
+{
+    document.cookie = `id_favourite${id}=${id} ; expires = Thu, 01 Jan 1970 00:00:00 GMT`;
+    renderRecipes();
+
 }
 
 async function modalTrigger(id){
@@ -215,6 +267,8 @@ function slowRender()
     refreshInterval = 5000;
     slowRenderValid = setInterval(renderRecipes, 5000);
 }
+// --- END
+
 
 function fillDoc()
 {     
@@ -239,12 +293,13 @@ function swapPages()
         slowRender();//Todo fix!     
     }  
 }
+function showLiked(){
+    swapPages();
+    tokenMyRecipes = true;
+    renderRecipes();
+}
 
-// --- END
-
-
-
-
+var tokenMyRecipes = false;
 var refreshInterval = 5000;
 renderRecipes();
 
