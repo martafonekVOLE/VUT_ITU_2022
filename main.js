@@ -17,7 +17,7 @@ async function getRecipes() {
     }
 }
 
-async function renderRecipes() {
+async function renderRecipes(option = 0) {
     // Event listeners for slow and fast render - David Konečný (xkonec83)
     const filter = document.getElementById("filter");
     if(filter){
@@ -43,15 +43,45 @@ async function renderRecipes() {
 
         i = 0;
 
+        var cookies = [];
+        if (document.cookie && document.cookie != '')
+        {
+            var split = document.cookie.split(';');
+            for (var i = 0; i < split.length; i++)
+            {
+                var name_value = split[i].split("=");
+                name_value[0] = name_value[0].replace(/^ /, '');
+                cookies[decodeURIComponent(name_value[0])] = decodeURIComponent(name_value[1]);
+            }
+        }
+
         unfilteredRecipes.forEach(unfilteredRecipe => {
 
             const found = unfilteredRecipe.name.match(regex);
 
             if (found)
             {
-                if (found[0] !== "")
+                if (option === 1)
                 {
-                    recipes.push(unfilteredRecipe);
+                    if (found[0] !== "")
+                    {
+                       for (var key in cookies)
+                       {
+                            console.log(cookies[key]);
+                            if (cookies[key] == unfilteredRecipe.id)
+                            {
+                                recipes.push(unfilteredRecipe);
+                            }
+
+                       }
+                    }
+                }
+                else
+                {
+                    if (found[0] !== "")
+                    {
+                        recipes.push(unfilteredRecipe);
+                    }
                 }
             }
             
@@ -69,7 +99,7 @@ async function renderRecipes() {
                             <button class="btn btn-dark invisibleButton" onclick="modalTrigger(${recipe.id})">Zobrazit podrobnosti</button>
                             <button class="btn btn-success invisibleButton" onclick="swapContent(${recipe.id})">Vařit</button>   
                             <button class="btn btn-success invisibleButton" onclick="setCookie(${recipe.id})">Edit</button>     
-
+                            <button class="btn btn-success invisibleButton" onclick="setCookieFavourite(${recipe.id})">Like</button>
                             </div>`;
         htmlSegment += `<div class="ingredientPhoto">
                     </div>
@@ -89,6 +119,11 @@ function setCookie(id){
     now.setTime(now.getTime() + (10000));
     document.cookie = `id=${id}; expires=${now}`;
     modalTrigger(-20);
+}
+
+function setCookieFavourite(id)
+{
+    document.cookie = `id_favourite${id}=${id}`;
 }
 
 function modalTrigger(id){
@@ -164,6 +199,7 @@ function fastRender()
 {
     clearInterval(slowRenderValid);
     refreshInterval = 500;
+    //fastRenderValid = setInterval(function() {renderRecipes(1);}, 500);
     fastRenderValid = setInterval(renderRecipes, 500);
 }
 
@@ -173,7 +209,34 @@ function slowRender()
     refreshInterval = 5000;
     slowRenderValid = setInterval(renderRecipes, 5000);
 }
+
+function fillDoc()
+{     
+    document.getElementById("filter").value = document.getElementById("filterMain").value; 
+}  
+
+function swapPages()
+{     
+    if (document.getElementById("displayLandingPage").style.display == "none") 
+    {         
+        document.getElementById("displayLandingPage").style.display = "block";         
+        document.getElementById("displayLandingPage").style.height = "100%";         
+        document.getElementById("displayRecipes").style.display = "none";     
+    }     
+    else
+    {         
+        document.getElementById("displayLandingPage").style.height = "100vh";         
+        document.getElementById("displayLandingPage").style.display = "none";         
+        document.getElementById("displayRecipes").style.display = "block";         
+        fillDoc();         
+        fastRender();         
+        slowRender();//Todo fix!     
+    }  
+}
+
 // --- END
+
+
 
 
 var refreshInterval = 5000;
