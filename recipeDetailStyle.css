@@ -1,4 +1,11 @@
-/* Recipe detail page */
+/*
+ file recipeDetailView.css
+ author Matěj Konopík (xkonop03@vutbr.cz)
+ brief This file contains styles for rendering recipe detail view
+ version 1.0
+ date 2022-11-15
+*/
+
 
 .ingredient-container {
     display: flex;
