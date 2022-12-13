@@ -2,10 +2,14 @@
     overflow-x: hidden;
     box-sizing: border-box;
 }
+h1, h2, h3{
+    overflow-y: hidden;
+}
 .sidePanel{
     text-align: center;
-    height: 100vh;
+    height: 100%;
     position: static;
+    background-color: #e7e7e7;
 }
 .sidePanel h1{
     padding: 20px;
@@ -82,14 +86,15 @@
 .searchfield{
     width: 95%;
 }
-.col-sm-2{
-    background-color: rgba(19, 35, 47, 0.285);
-}
 .rightsideBackground{
     background: url('img/default.png');
     box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.785);
     background-size: cover;
 }
+.rightFloat{
+    margin-left: auto;
+}
+
 /* Modal */
 .modal {
     display: none; /* Hidden by default */
@@ -129,6 +134,12 @@
     display: none;
 }
 .hiddenButton{
+    display: none;
+}
+.displayLandingPage{
+    display: block;
+}
+.recipes{
     display: none;
 }
 
