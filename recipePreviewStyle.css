@@ -1,0 +1,80 @@
+.rp-ingredient-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1em;
+    padding: 2em;
+}
+
+.rp-ingredient-list li{
+    background: #1b1920;
+    border-radius: 1em;
+    margin: 1em;
+}
+
+.rp-top-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 1em;
+}
+
+.rp-ingredients, .rp-image-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+    padding: 1em;
+    background: #8c8c8c;
+    border-radius: 1em;
+}
+
+.rp-steps-header{
+    color: black;
+}
+
+.preview-step-name{
+    color: black;
+}
+
+.rp-steps-container{
+    background: #8c8c8c;
+    border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1em;
+}
+
+.rp-footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+    padding: 1em;
+}
+
+.rp-steps{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+    padding: 1em;
+    background: #8c8c8c;
+    border-radius: 1em;
+}
+
+.rp-button{
+    padding: 1em;
+    border-radius: 1em;
+    text-align: center;
+    margin: 1em;
+    background: #a4e3a4;
+    color: black;
+    font-size: medium;
+    transition: 0.2s;
+}
