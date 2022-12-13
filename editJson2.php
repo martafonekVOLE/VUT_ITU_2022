@@ -146,6 +146,12 @@ error_reporting(E_ALL);
                         <button type='submit' class='btn btn-primary'  name='submitted'>Vytvořit</button>
                     </div>
                 </form>
+                <div class='mb-3'>
+                    <form method='post' action='editJson.php'>
+                        <button type='submit' class='btn btn-danger' name='delete'>Odstranit</button>
+                        <input type='hidden' value='$id' name='id'/>
+                    </form>
+                </div>
             </div>
             <div class='col'></div>
         </div>
