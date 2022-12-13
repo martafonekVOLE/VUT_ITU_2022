@@ -126,7 +126,8 @@ function setCookieFavourite(id)
     document.cookie = `id_favourite${id}=${id}`;
 }
 
-function modalTrigger(id){
+async function modalTrigger(id){
+    console.log("modal fired");
     if(window.localStorage.getItem('closeModal') !== null){
         window.localStorage.removeItem("closeModal");
     }
@@ -152,7 +153,7 @@ function modalTrigger(id){
         var recipeID = "_recipeName";
         if(document.getElementById(newid.concat(recipeID)) != null){
             console.log(document.getElementById(newid.concat(recipeID)).innerHTML);
-            document.getElementById("modalText").innerHTML = document.getElementById(newid.concat(recipeID)).innerHTML;
+            document.getElementById("modalText").innerHTML = await renderRecipePreview(id);
         }
     }   
 }
@@ -185,6 +186,11 @@ async function swapContent(id){
         //Possibility: 
         //Pass args to another functions that fills HTML form - this then prints
     }
+}
+
+async function refreshContent(id){
+    document.querySelector('.recipeContent').innerHTML = await renderRecipe(id);
+    document.getElementById("recipe-header").scrollIntoView();
 }
 
 function checkModal(){

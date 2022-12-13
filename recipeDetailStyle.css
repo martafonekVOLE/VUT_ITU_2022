@@ -34,8 +34,9 @@
     box-shadow: 5px 5px 10px black;
 }
 
-.timer_container {
+#timer_container {
     position: fixed;
+    left: unset;
     top: 20px;
     right: 20px;
     margin-left: 20px;
@@ -65,7 +66,6 @@
 }
 
 .timer_loader {
-    background: blue;
     height: 1em;
     width: 0;
 }
@@ -101,6 +101,7 @@
     justify-content: space-between;
     align-items: end;
     margin-bottom: 2em;
+    min-height: 80px;
 }
 
 .timer-wrap:hover {
@@ -130,7 +131,6 @@
     margin: 1em;
     border-radius: 1em;
     padding: 1em;
-    max-width: 10em;
     min-width: 5em;
     display: flex;
     align-items: center;
@@ -140,7 +140,7 @@
 }
 
 .ingredient-item:hover {
-    box-shadow: 2px 2px 5px #2196f3;
+    box-shadow: 2px 2px 5px white;
 }
 
 .timer {
@@ -195,7 +195,7 @@
 }
 
 .loader-wrap {
-    border: #1b1920 solid 3px;
+    border: #1b1920 solid 1px;
     border-radius: 7px;
 }
 
@@ -346,6 +346,7 @@
     flex-direction: column;
     justify-content: center;
     margin: 1em;
+    padding-bottom: 3em;
 }
 
 h1 {
@@ -377,6 +378,10 @@ h3 {
     height: auto;
     margin-top: 40px;
     margin-right: 30px;
+}
+
+.step-radio-checkmark{
+    margin-top: 12px;
 }
 
 /* Checkmark & radio for ingredients */
@@ -488,15 +493,15 @@ h3 {
 }
 
 .recipe-button-home:hover{
-    background: #ea9292;
+    color: white;
 }
 
 .recipe-button-restart:hover{
-    background: #ea9292;
+    color: white;
 }
 
 .recipe-button-home-ready:hover{
-    background: #6bab6b;
+    color: white;
 }
 
 .recipe-header{
@@ -512,4 +517,56 @@ h3 {
     padding: 2em;
 }
 
+.home-btn{
+    border: none;
+    text-align: center;
+    margin: 1em;
+    color: black;
+    font-size: medium;
+    transition: 0.2s;
+}
 
+.home-btn:hover{
+    color: #ffffff;
+    background: none;
+}
+
+.refresh-btn:hover{
+    cursor: pointer;
+}
+
+.recipe-name{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.recipe-category{
+    color: black;
+    background: #a4e3a4;
+    padding: 0.5em;
+    border-radius: 1em;
+    margin: 1em;
+    border: 2px solid black;
+}
+
+@media(max-width: 600px){
+    .step{
+        padding: 1em;
+        margin: 1em;
+    }
+
+    .ingredient-container, .recipe-header, .portion-picker-container, .recipe-footer{
+        padding: 1em;
+        margin: 1em;
+    }
+
+    .step-radio-container{
+        margin-right: 3px;
+    }
+
+    .recipe-name {
+        flex-direction: column;
+    }
+}
