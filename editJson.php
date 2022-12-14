@@ -2,6 +2,7 @@
     File: editJson2.php
 
     Author: David Konečný (xkonec83)
+    Minor corrections: Martin Pech (xpechm00)
 -->
 
 <?php

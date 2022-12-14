@@ -77,9 +77,7 @@ async function renderRecipePreview(recipeId) {
                                     </div>
                             </div>
                             <div class="rp-top-content">
-                            <div class="rp-image-container">
-                                <img class="rp-image" src="${recipe.image}" alt="${recipe.name}">
-                            </div>
+
                             <div class="rp-info-container">
                             <h2 class="rp-ingredients-header">Ingredience na ${recipe.portions} porce</h2>
                             <div class="rp-ingredients">
