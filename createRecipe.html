@@ -1,3 +1,8 @@
+<!--File: createRecipe.html-->
+<!--Author: David Konečný (xkonec83)-->
+<!--Description: Page for creating a new recipe-->
+
+
 <html>
     <head>
         <meta charset="utf-8" />
@@ -19,7 +24,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <form method="post" action="editJson.php">
+                    <form method="post" action="editJson.php" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label>Název pokrmu</label>
                             <input type="text" class="form-control" placeholder="Název" required name="name">
@@ -30,7 +35,7 @@
                         </div>
                         <div class="mb-3">
                             <label>Katerogie jídla</label>
-                            <select class="form-select" name="category" name="category" required>
+                            <select class="form-select" name="category" required>
                                 <option selected>Vyberte kategorii</option>
                                 <option value="Hlavní jídla">Hlavní jídla</option>
                                 <option value="Dezerty">Dezerty</option>
@@ -47,7 +52,7 @@
                         </div>
                         <div class="mb-3">
                             <label>Nahrát fotografii</label>
-                            <input type="file" class="form-control" required name="img" accept="image/*">
+                            <input type="file" class="form-control" id="img" required name="img">
                         </div>
                         <div class="mb-3">
                             <!-- <input type="submit" name="submitted"> -->

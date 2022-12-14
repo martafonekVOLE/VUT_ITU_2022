@@ -1,4 +1,10 @@
-function checkContent(){   
+/**
+ * @author Martin Pech (xpechm00)
+ * @file formFieldManager.js
+ * @brief Script for managing form fields
+ */
+
+function checkContent(){
     var tokenGo = false;
     if(window.localStorage.getItem("currNumber") == null){
         if(window.localStorage.getItem("currNumber2") != null){
