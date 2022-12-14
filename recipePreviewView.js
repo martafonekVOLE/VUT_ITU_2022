@@ -6,14 +6,21 @@
  * @returns {string}
  */
 function generatePreviewStepDiv(name, description, time) {
+    let minuteText = "";
+    if (time !=="") {
+
+        minuteText = "minut";
+    }
     return `<div class="preview-step-container">
                 <div class="preview-step-content">
+                    <div class="preview-step-header">
                     <h2 class="preview-step-name">${name}</h2>
-                    <p>${description}</p>
                     <div class="preview-step-time">
-                        <p>${time} minut</p>
+                            ${time} ${minuteText}
                     </div>
-                </div>
+                    </div>
+                <p>${description}</p>
+            </div>
             </div>`;
 }
 
@@ -57,20 +64,27 @@ async function renderRecipePreview(recipeId) {
     const recipes = await getRecipes();
     const recipe = recipes.find(({id}) => id == recipeId);
     let htmlResponse = `<div class="rp">
-                            <h1 class="rp-header">${recipe.name}</h1>
+                            <div class="recipe-name">
+                                    <h1>${recipe.name}</h1>
+                                    <div class="recipe-category">
+                                        ${recipe.category}
+                                    </div>
+                            </div>
                             <div class="rp-top-content">
                             <div class="rp-image-container">
                                 <img class="rp-image" src="${recipe.image}" alt="${recipe.name}">
                             </div>
+                            <div class="rp-info-container">
+                            <h2 class="rp-ingredients-header">Ingredience na ${recipe.portions} porce</h2>
                             <div class="rp-ingredients">
-                                <h2 class="rp-ingredients-header">Ingredience</h2>
                                 <ul class="rp-ingredients-list">`;
 
     recipe.ingredients.forEach(ingredient => {
-        htmlResponse += `<li>${ingredient[0]} <span class="rp-ingredient-amount">${ingredient[1]} ${ingredient[2]}</span></li>`;
+        htmlResponse += `<li class="ingredient-li">${ingredient[0]} <span class="rp-ingredient-amount">${" " + ingredient[1]} ${ingredient[2]}</span></li>`;
     });
 
     htmlResponse += `</ul>
+                    </div>
                     </div>
                     </div>  
                     <h2 class="rp-steps-header">Postup</h2>

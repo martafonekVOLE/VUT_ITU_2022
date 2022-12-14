@@ -129,6 +129,7 @@ h1, h2, h3{
     color: red;
     width: min-content;
     cursor: pointer;
+    overflow: initial;
 }
 .ingredients{
     display: none;

@@ -61,11 +61,14 @@ function checkIfAllStepsDone() {
  * @brief generates portion picker
  * @returns html segment for portion size picker {string}
  */
-function generatePortionPicker() {
+function generatePortionPicker(defaultPortions) {
+    if(defaultPortions === undefined || defaultPortions === null || defaultPortions <= 0 || defaultPortions > 10){
+        defaultPortions = 1;
+    }
     return `
     <h1 id="recipe-detail-header" class="recipe-detail-header">Pro kolik lidí se vaří?</h1>
     <div id="portion-picker-container" class="portion-picker-container">
-        <input type="range" value="1" class="form-range" min="1" max="10" step="1"  id="customRange3" oninput="updatePortionCount()">
+        <input type="range" value="${defaultPortions}" class="form-range" min="1" max="10" step="1"  id="customRange3" oninput="updatePortionCount()">
         <div class="portion-count" id="portionCount">Počet porcí: 5</div>
         <button type="button" style="margin: 15px; font-size: 20px;" class="btn btn-dark" id="portionButton" onclick="setPortionCount()">Napočítat</button>
     </div>
@@ -246,7 +249,7 @@ async function renderRecipe(recipeId) {
                         </div>`;
 
     //render portion counter
-    htmlResponse += generatePortionPicker();
+    htmlResponse += generatePortionPicker(recipe.portions);
 
     htmlResponse += `   <h1 class="ingredient-header">Nachystej si ingredience</h1>
                         <div id="ingredient-container" class="ingredient-container">`;
