@@ -32,10 +32,10 @@ function checkContent(){
     if(content != null){
         if(content.innerHTML == null || content.innerHTML.trim() == ""){
             var newField = `<h3 id="${currNumber}"></h3>`; 
-            newField += `<input type="text" class="col-sm-5" placeholder="Jméno ingredience" required name="ingredients${currNumber}1" id="ingredients${currNumber}1">`;
-            newField += `<input type="number" class="col-sm-3" placeholder="Množství ingredience" required name="ingredients${currNumber}2" id="ingredients${currNumber}2">`;
-            newField += `<input type="text" class="col-sm-3" placeholder="Jednotka" required name="ingredients${currNumber}3" id="ingredients${currNumber}3">`; //TODO replace dropdown
-            newField += `<span class="col-sm-1" onclick="removeIngredient(${currNumber})">&times;</span>`;
+            newField += `<input type="text"  style="border-radius:5px" class="col-sm-5" placeholder="Jméno ingredience" required name="ingredients${currNumber}1" id="ingredients${currNumber}1">`;
+            newField += `<input type="number" style="border-radius:5px" class="col-sm-3" placeholder="Množství ingredience" required name="ingredients${currNumber}2" id="ingredients${currNumber}2">`;
+            newField += `<input type="text" style="border-radius:5px" class="col-sm-3" placeholder="Jednotka" required name="ingredients${currNumber}3" id="ingredients${currNumber}3">`; //TODO replace dropdown
+            newField += `<span class="col-sm-1 close" style="border-radius:5px" onclick="removeIngredient(${currNumber})">&times;</span>`;
             newField += `</div>`;
             content.innerHTML = newField;
             if(tokenGo){
@@ -62,11 +62,11 @@ function checkContent(){
     }
     else{
         var newField = `<div class="mb-3" id="auto-fill-content${currNumber}"><h3 id="${currNumber}"></h3>`; 
-        newField += `<input type="text" class="col-sm-5" placeholder="Jméno ingredience" name="ingredients${currNumber}1" id="ingredients${currNumber}1">`;
-        newField += `<input type="number" class="col-sm-3" placeholder="Množství" name="ingredients${currNumber}2" id="ingredients${currNumber}2">`;
-        newField += `<input type="text" class="col-sm-3" placeholder="Jednotka" name="ingredients${currNumber}3" id="ingredients${currNumber}3">`;
+        newField += `<input style="border-radius:5px"  type="text" class="col-sm-5" placeholder="Jméno ingredience" name="ingredients${currNumber}1" id="ingredients${currNumber}1">`;
+        newField += `<input type="number" style="border-radius:5px" class="col-sm-3" placeholder="Množství" name="ingredients${currNumber}2" id="ingredients${currNumber}2">`;
+        newField += `<input type="text" style="border-radius:5px" class="col-sm-3" placeholder="Jednotka" name="ingredients${currNumber}3" id="ingredients${currNumber}3">`;
          //TODO replace dropdown
-        newField += `<span class="col-sm-1" onclick="removeIngredient(${currNumber})">&times;</span></div>`;
+        newField += `<span class="col-sm-1 close" onclick="removeIngredient(${currNumber})">&times;</span></div>`;
         content.innerHTML += newField;
         window.localStorage.removeItem("currNumber");
         var nextNumber = currNumber+1;
@@ -110,10 +110,10 @@ function checkDesc(){
     if(content != null){
         if(content.innerHTML == null || content.innerHTML.trim() == ""){
             var newField = `<h3 id="${currDesc}"></h3>`; 
-            newField += `<input type="text" class="col-sm-5" placeholder="Název kroku" required name="desc${currDesc}1" id="desc${currDesc}1">`;
-            newField += `<input type="text" class="col-sm-3" placeholder="Popis" required name="desc${currDesc}2" id="desc${currDesc}2">`;
-            newField += `<input type="text" class="col-sm-3" placeholder="Čas provádění (v minutách)" name="desc${currDesc}3" id="desc${currDesc}3">`; //TODO replace dropdown
-            newField += `<span class="col-sm-1" onclick="removeIngredient(${currDesc})">&times;</span>`;
+            newField += `<input type="text" style="border-radius:5px" class="col-sm-5" placeholder="Název kroku" required name="desc${currDesc}1" id="desc${currDesc}1">`;
+            newField += `<input type="text" style="border-radius:5px" class="col-sm-3" placeholder="Popis" required name="desc${currDesc}2" id="desc${currDesc}2">`;
+            newField += `<input type="text" style="border-radius:5px" class="col-sm-3" placeholder="Čas provádění (v minutách)" name="desc${currDesc}3" id="desc${currDesc}3">`; //TODO replace dropdown
+            newField += `<span class="col-sm-1 close" onclick="removeDesc(${currDesc})">&times;</span>`;
             newField += `</div>`;
             content.innerHTML = newField;
             if(tokenGo){
@@ -140,11 +140,11 @@ function checkDesc(){
     }
     else{
         var newField = `<div class="mb-3" id="auto-fill-desc${currDesc}"><h3 id="${currDesc}"></h3>`; 
-        newField += `<input type="text" class="col-sm-5" placeholder="Název kroku" name="desc${currDesc}1" id="desc${currDesc}1">`;
-        newField += `<input type="text" class="col-sm-3" placeholder="Popis" name="desc${currDesc}2" id="desc${currDesc}2">`;
-        newField += `<input type="text" class="col-sm-3" placeholder="Čas provádění (v minutách)" name="desc${currDesc}3" id="desc${currDesc}3">`;
+        newField += `<input type="text" style="border-radius:5px" class="col-sm-5" placeholder="Název kroku" name="desc${currDesc}1" id="desc${currDesc}1">`;
+        newField += `<input type="text" style="border-radius:5px" class="col-sm-3" placeholder="Popis" name="desc${currDesc}2" id="desc${currDesc}2">`;
+        newField += `<input type="text" style="border-radius:5px" class="col-sm-3" placeholder="Čas provádění (v minutách)" name="desc${currDesc}3" id="desc${currDesc}3">`;
          //TODO replace dropdown
-        newField += `<span class="col-sm-1" onclick="removeDesc(${currDesc})">&times;</span></div>`;
+        newField += `<span class="col-sm-1 close" onclick="removeDesc(${currDesc})">&times;</span></div>`;
         content.innerHTML += newField;
         window.localStorage.removeItem("currDesc");
         var nextNumber = currDesc+1;

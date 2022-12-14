@@ -5,4 +5,11 @@
 .btn-primary:hover {
     background-color: #808080;
 }
+.close{
+    font-size: 2rem;
+    color: red;
+    width: min-content;
+    cursor: pointer;
+    overflow: initial;
+}
 

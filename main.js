@@ -107,8 +107,9 @@ async function renderRecipes(option = 0) {
                 <div class="recipeCategory" id="${recipe.id}_recipeCategory">${recipe.category}</div>       
                 <button class="btn btn-dark invisibleButton" onclick="modalTrigger(${recipe.id})">Zobrazit podrobnosti</button>
                 <button class="btn btn-success invisibleButton" onclick="swapContent(${recipe.id})">Vařit</button>   
-                <button class="btn btn-success invisibleButton" onclick="setCookie(${recipe.id})">Edit</button>     
-                <button class="btn btn-success invisibleButton" onclick="unsetCookieFavourite(${recipe.id})">Unlike</button>
+                <br>
+                <button class="btn btn-dark invisibleButton" onclick="setCookie(${recipe.id})">Editovat</button>     
+                <button class="btn btn-warning invisibleButton" onclick="unsetCookieFavourite(${recipe.id})">Unlike</button>
                 </div>`;
                 htmlSegment += `<div class="ingredientPhoto">
                 </div>
@@ -130,7 +131,8 @@ async function renderRecipes(option = 0) {
                     <div class="recipeCategory" id="${recipe.id}_recipeCategory">${recipe.category}</div>       
                     <button class="btn btn-dark invisibleButton" onclick="modalTrigger(${recipe.id})">Zobrazit podrobnosti</button>
                     <button class="btn btn-success invisibleButton" onclick="swapContent(${recipe.id})">Vařit</button>   
-                    <button class="btn btn-success invisibleButton" onclick="setCookie(${recipe.id})">Edit</button>`
+                    <br>
+                    <button class="btn btn-dark invisibleButton" onclick="setCookie(${recipe.id})">Editovat</button>`
                     var tokenReady = false;
                     for (var key in cookies){
                         if(cookies[key] == recipe.id){
@@ -139,10 +141,10 @@ async function renderRecipes(option = 0) {
                     }
 
                     if(!tokenReady){
-                        htmlSegment += `<button class="btn btn-success invisibleButton" onclick="setCookieFavourite(${recipe.id})">Like</button>`;
+                        htmlSegment += `<button class="btn btn-danger invisibleButton" onclick="setCookieFavourite(${recipe.id})">Like</button>`;
                     }     
                     else{
-                        htmlSegment += `<button class="btn btn-success invisibleButton" onclick="unsetCookieFavourite(${recipe.id})">Unlike</button>`;
+                        htmlSegment += `<button class="btn btn-warning invisibleButton" onclick="unsetCookieFavourite(${recipe.id})">Unlike</button>`;
                     }
 
                     htmlSegment += `</div><div class="ingredientPhoto"></div></div>`;
@@ -192,11 +194,11 @@ async function modalTrigger(id){
     }
 
     if(id == -10){
-        var htmlContent = `<iframe src="createRecipe.html" class="formInModal" style="position: absolute" width="100%" height="100%">`;
+        var htmlContent = `<iframe src="createRecipe.html" class="formInModal" style="position: absolute" width="100%" height="200%">`;
         document.getElementById("modalText").innerHTML = htmlContent;
     }
     else if(id == -20){
-        var htmlContent = `<iframe src="editJson2.php" class="formInModal" style="position: absolute" width="100%" height="100%">`;
+        var htmlContent = `<iframe src="editJson2.php" class="formInModal" style="position: absolute" width="100%" height="200%">`;
         document.getElementById("modalText").innerHTML = htmlContent;
     }
     else{
@@ -242,7 +244,9 @@ async function swapContent(id){
 
 async function refreshContent(id){
     document.querySelector('.recipeContent').innerHTML = await renderRecipe(id);
-    document.getElementById("recipe-header").scrollIntoView();
+    if(document.getElementById("recipe-header") != null){
+        document.getElementById("recipe-header").scrollIntoView();
+    }
 }
 
 function checkModal(){
@@ -296,6 +300,14 @@ function swapPages()
 function showLiked(){
     swapPages();
     tokenMyRecipes = true;
+    renderRecipes();
+}
+function enableLiked(){
+    tokenMyRecipes = true;
+    renderRecipes();
+}
+function disableLiked(){
+    tokenMyRecipes = false;
     renderRecipes();
 }
 
