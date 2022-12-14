@@ -1,3 +1,7 @@
+<!--File: index.html-->
+<!--Author: Martin Pech (xpechm00)-->
+<!--Description: Main page of the web application-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +19,7 @@
 
     <!--LP-->
 
-    <div class="displayLandingPage" id="displayLandingPage" style="height: 100vh; overflow-y: hidden;">
+    <div class="displayLandingPage" id="displayLandingPage" style="height: 100vh;">
         <div class="navbarrr">
             <a href="coaches.php">Vložit recept</a>
             <a href="calendar.php">Moje recepty</a>
@@ -25,7 +29,7 @@
         
         <!-- BURGER MENU -->
         <div class="burgerWrapper">
-            <label for="menu" class="burgerrr"><span></span></label>
+            <label for="menu" class="burger"><span></span></label>
             <div class="burgerMenu">
                 <input type="checkbox" id="menu" class="burger-check">
         
@@ -48,9 +52,9 @@
                 <h2>Tvůj každodenní pomocník na cestě za dokonalým zážitkem</h2>
                 <div class="searchbar">
                     <input placeholder="Filter" type="text" class="form-control searchfield" id="filterMain">
-                    <button class="btn btn-dark rightFloat" onclick="swapPages();">Vyhledávat všude</button>
-                    <button class="btn btn-dark rightFloat" onclick="showLiked();">Vyhledávat v mých receptech</button>
                 </div>
+                <button class="btn btn-dark rightFloat" onclick="swapPages();">1</button>
+                <button class="btn btn-dark rightFloat" onclick="showLiked();">2</button>
             </div>
             <div class="picture">
             </div>
@@ -70,10 +74,10 @@
         
         <!-- BURGER MENU -->
         <div class="burgerWrapper">
-            <label for="menu" class="burgerrr"><span></span></label>
+            <label for="menu" class="burger"><span></span></label>
             <div class="burgerMenu">
                 <input type="checkbox" id="menu" class="burger-check">
-                
+        
                 <ul>
                     <li><a href="calendar.php">Vložit recept</a></li>
                     <li><a href="calendar.php">Moje recepty</a></li>
@@ -93,7 +97,7 @@
             <!--Side panel-->
             <div class="col-sm-2">
                 <div class="sidePanel">
-                    <span><img src="img/logo2.png" height="180px" width="250px" alt=""></span>
+                    <img class="logo" src="img/logo2.png">
                     <button class="btn btn-dark" style="margin-top: 20px;" onclick="modalTrigger(-10);">Vložit recept</button>
                 </div>
             </div>
