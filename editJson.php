@@ -1,3 +1,9 @@
+<!--
+    File: editJson2.php
+
+    Author: David Konečný (xkonec83)
+-->
+
 <?php
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -19,9 +25,9 @@ function save_uploaded_image()
             }
         }
         if (file_exists($target_file)) {
-            $uploadOk = 0;
+            return "./img/" .$_FILES["img"]["name"];
         }
-        if ($_FILES["img"]["size"] > 5000000) {
+        if ($_FILES["img"]["size"] > 50000000) {
             $uploadOk = 0;
         }
         if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
@@ -33,7 +39,7 @@ function save_uploaded_image()
             if (!move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
                 return -3;
             } else {
-                return "../img/" . ($_FILES["img"]["name"]);
+                return "./img/" .$_FILES["img"]["name"];
             }
         }
     }
@@ -101,9 +107,11 @@ if (isset($_POST['delete']))
                 }
             }
             $maxID++;
-
-            $a = array('id'=>"$maxID", 'name'=>$name, 'category'=>$category, 'portions'=>$portions, 'photo'=>save_uploaded_image());
-
+            $out_img = save_uploaded_image();
+            if($out_img == -1 || $out_img == -2 || $out_img == -3){
+                $out_img = "default.jpg";
+            }
+            $a = array('id'=>"$maxID", 'name'=>$name, 'category'=>$category, 'portions'=>$portions, 'photo'=>$out_img);
             $j = 1;
             $ingredients = array();
             $descs = array();
@@ -168,7 +176,7 @@ if (isset($_POST['delete']))
             echo "Error has occured while inserting to JSON.";
             redirect('createRecipe.html');
         }
-        
+
         redirect('index.html');
     }
 
