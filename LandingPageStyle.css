@@ -9,7 +9,6 @@
 }
 body{
     background-color: #e7e7e7;
-    overflow-y: hidden;
 }
 .pageHeader{
     overflow-x: hidden;
@@ -256,7 +255,7 @@ a:hover{
     height: 60px;
     cursor: pointer;
 }
-.burger {
+.burgerrr {
     position: relative;
     float: right;
     margin-right: 10px;
@@ -265,7 +264,7 @@ a:hover{
     cursor: pointer;
 }
 
-.burger:after {
+.burgerrr:after {
     position: absolute;
     bottom: 7px;
     left: 0px;
@@ -275,7 +274,7 @@ a:hover{
     transition: all 0.3s;
 }
 
-.burger span, .burger span:before, .burger span:after {
+.burgerrr span, .burgerrr span:before, .burgerrr span:after {
     position: absolute;
     left: 10px;
     top: 40px;
@@ -286,33 +285,33 @@ a:hover{
     transition: all 0.3s;
 }
 
-.burger span:before, .burger span:after {
+.burgerrr span:before, .burgerrr span:after {
     content: '';
     left: 0;
     transition: all 0.3s;
 }
 
-.burger span:before {
+.burgerrr span:before {
     top: -8px;
     transition: all 0.3s;
 }
 
-.burger span:after {
+.burgerrr span:after {
     top: 8px;
     transition: all 0.3s;
 }
 
-.burger:hover span{
+.burgerrr:hover span{
     background-color: transparent;
 }
 
-.burger:hover span::after{
+.burgerrr:hover span::after{
     transform: rotate(45deg);
     top: 0px;
     transition: all 0.3s;
 }
 
-.burger:hover span::before{
+.burgerrr:hover span::before{
     transform: rotate(-45deg);
     top:0px;
     transition: all 0.3s;

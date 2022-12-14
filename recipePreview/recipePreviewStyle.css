@@ -1,0 +1,147 @@
+/*
+ file recipeDetailView.css
+ author Matěj Konopík (xkonop03@vutbr.cz)
+ brief This file contains styles for rendering recipe detail view
+ version 1.0
+ date 2022-11-15
+*/
+
+.rp-ingredients-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1em;
+    padding: 1em;
+}
+
+.ingredient-li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 6px;
+    padding: 6px;
+    border-bottom: 1px dotted #8c8c8c;
+}
+
+.rp-top-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 1em;
+}
+
+.rp-ingredients, .rp-image-container {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+    padding: 1em;
+    background: #1b1920;
+    border-radius: 1em;
+    height: 100%;
+}
+
+
+.preview-step-name {
+    color: white;
+}
+
+.preview-step-time {
+    color: #8c8c8c;
+    padding: 10px;
+    text-align: baseline;
+}
+
+.preview-step-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: self-end;
+    margin: 1.5em 1em 0.5em 1em;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+.rp-steps-container {
+    background: #1b1920;
+    border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1em;
+}
+
+.rp-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+    padding: 1em;
+}
+
+.rp-steps {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2em;
+    padding: 2em;
+    background: #1b1920;
+    border-radius: 1em;
+    color: white;
+}
+
+.rp-button {
+    padding: 1em;
+    border-radius: 1em;
+    text-align: center;
+    margin: 1em;
+    background: #a4e3a4;
+    color: black;
+    font-size: medium;
+    transition: 0.2s;
+}
+
+.rp-ingredient-amount {
+    padding-left: 1em;
+}
+
+.rp-button:hover {
+    color: white;
+}
+
+.rp-steps-header, .rp-ingredients-header {
+    color: black;
+}
+
+@media (max-width: 600px) {
+    .rp-top-content {
+        flex-direction: column;
+    }
+
+    .rp-ingredients, .rp-image-container {
+        margin: 0.5em;
+    }
+
+    .rp-steps-container {
+        margin: 0.5em;
+    }
+
+    .rp-steps {
+        margin: 0.5em;
+        padding: 0.5em;
+    }
+
+    .rp-footer {
+        flex-direction: column;
+    }
+
+    .preview-step-header {
+        flex-direction: column;
+        align-items: baseline;
+    }
+}
