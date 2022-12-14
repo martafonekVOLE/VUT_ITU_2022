@@ -63,7 +63,7 @@ function generatePortionPicker(defaultPortions) {
     <h1 id="recipe-detail-header" class="recipe-detail-header">Pro kolik lidí se vaří?</h1>
     <div id="portion-picker-container" class="portion-picker-container">
         <input type="range" value="${defaultPortions}" class="form-range" min="1" max="10" step="1"  id="customRange3" oninput="updatePortionCount()">
-        <div class="portion-count" id="portionCount">Počet porcí: 5</div>
+        <div class="portion-count" id="portionCount">Počet porcí: ${defaultPortions}</div>
         <button type="button" style="margin: 15px; font-size: 20px;" class="btn btn-dark" id="portionButton" onclick="setPortionCount()">Napočítat</button>
     </div>
     `
