@@ -505,16 +505,10 @@ h3 {
 }
 
 .recipe-header {
-    border-radius: 0 0 2em 2em;
-    box-shadow: 20px 20px 50px dimgray;
-    background: #8c8c8c;
-    display: flex;
-    position: sticky;
-    top: 0;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 4em 6em 4em;
+    text-align: center;
+    border-radius: 2em;
     padding: 2em;
+    text-shadow: #1b1920;
 }
 
 .home-btn {
@@ -568,5 +562,16 @@ h3 {
 
     .recipe-name {
         flex-direction: column;
+    }
+}
+@media (max-width: 400px) {
+    h2{
+        font-size: 1em;
+    }
+    p{
+        font-size: .8em;
+    }
+    .ingredient-item label{
+        font-size: 1em;
     }
 }

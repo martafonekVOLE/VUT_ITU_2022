@@ -104,7 +104,7 @@ error_reporting(E_ALL);
                         echo "<input type='text' class='col-sm-5' placeholder='Název kroku' value='$i[0]' name='ingredients".$index."1' id='ingredients".$index."1'>";
                         echo "<input type='text' class='col-sm-3' placeholder='Popis' value='$i[1]' name='ingredients".$index."2' id='ingredients".$index."2'>";
                         echo "<input type='text' class='col-sm-3' placeholder='Čas provádění' value='$i[2]' name='instructions".$index."3' id='ingredients".$index."3'>";
-                        echo "<span class='col-sm-1' onclick='removeIngredient($index)'>&times;</span></div>";
+                        echo "<span class='col-sm-1 close' onclick='removeIngredient($index)'>&times;</span></div>";
 
                         $index++;
                     }
@@ -126,7 +126,7 @@ error_reporting(E_ALL);
                         echo "<input type='text' class='col-sm-5' placeholder='Název kroku' value='$i[0]' name='instructions".$index."1' id='instructions".$index."1'>";
                         echo "<input type='text' class='col-sm-3' placeholder='Popis' value='$i[1]' name='instructions".$index."2' id='instructions".$index."2'>";
                         echo "<input type='text' class='col-sm-3' placeholder='Čas provádění' value='$i[2]' name='instructions".$index."3' id='instructions".$index."3'>";
-                        echo "<span class='col-sm-1' onclick='removeDesc($index)'>&times;</span></div>";
+                        echo "<span class='col-sm-1 close' onclick='removeDesc($index)'>&times;</span></div>";
 
                         $index++;
                     }

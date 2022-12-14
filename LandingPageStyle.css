@@ -165,6 +165,7 @@ a:hover{
     background-color: #000;
 }
 .navbarrr {
+    min-height: 2vh;
     overflow: hidden;
     background-color: #e7e7e7;
 }
@@ -348,8 +349,14 @@ a:hover{
     text-align: left;
     border: none;
 }
+.burgerMenu ul a:hover{
+    color: #fff;
+}
 
 #menu:checked ~ ul a {
+    height: 50px;
+}
+#menu2:checked ~ ul a {
     height: 50px;
 }
 @media (max-width: 1000px){
@@ -357,7 +364,7 @@ a:hover{
         display: flex;
     }
 }
-@media (max-width: 700px) {
+@media (max-width: 576px) {
     .navbarrr{
         display: none;
     }
