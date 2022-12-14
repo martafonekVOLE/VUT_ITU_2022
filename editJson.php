@@ -3,7 +3,44 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-    if (isset($_POST['delete']))
+function save_uploaded_image()
+{
+    if (isset($_FILES['img'])) {
+        $target_dir = __DIR__ . "/img/";
+        $target_file = $target_dir . basename($_FILES["img"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        if (isset($_POST["submit"])) {
+            $check = getimagesize($_FILES["img"]["tmp_name"]);
+            if ($check !== false) {
+                $uploadOk = 1;
+            } else {
+                $uploadOk = 0;
+            }
+        }
+        if (file_exists($target_file)) {
+            $uploadOk = 0;
+        }
+        if ($_FILES["img"]["size"] > 5000000) {
+            $uploadOk = 0;
+        }
+        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+            $uploadOk = 0;
+        }
+        if ($uploadOk == 0) {
+            return -2;
+        } else {
+            if (!move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
+                return -3;
+            } else {
+                return $_FILES["img"]["name"];
+            }
+        }
+    }
+    return -1;
+}
+
+if (isset($_POST['delete']))
     {
         $id = $_POST['id'];
 
@@ -52,9 +89,8 @@ error_reporting(E_ALL);
 
         try
         {
-            //TODO nastavit ukládání IMGs
+            //TODO save_uploaded_image() vrátí po uložení obrázku jeho název -> použít: $img = save_uploaded_image();
             $data = file_get_contents('recipe.json');
-            
             $json_arr = json_decode($data, true);
 
             //$last_index = max($json_arr[0]['id']);
@@ -150,4 +186,5 @@ error_reporting(E_ALL);
 
         echo $string;
     }
+
 ?>
