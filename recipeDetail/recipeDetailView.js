@@ -7,8 +7,6 @@
  */
 
 
-
-
 /**
  * @brief finds recipe by id
  * @param id
@@ -24,7 +22,6 @@ async function getRecipeById(id) {
 }
 
 
-
 /**
  * @brief finds ingredients by recipe id
  * @param id
@@ -33,7 +30,6 @@ async function getRecipeById(id) {
 async function getIngredientsByRecipeId(id) {
     return getRecipeById(id).ingredients;
 }
-
 
 
 /**
@@ -46,8 +42,7 @@ function checkIfAllStepsDone() {
         exitButton.style.background = "#a4e3a4";
         exitButton.className = "recipe-button-home-ready";
         exitButton.innerHTML = "Hotovo! Skočit domů";
-    }
-    else{
+    } else {
         exitButton.style.background = "#f6aeae";
         exitButton.className = "recipe-button-home";
         exitButton.innerHTML = "Skočit domů - chybí kroky";
@@ -56,13 +51,12 @@ function checkIfAllStepsDone() {
 }
 
 
-
 /**
  * @brief generates portion picker
  * @returns html segment for portion size picker {string}
  */
 function generatePortionPicker(defaultPortions) {
-    if(defaultPortions === undefined || defaultPortions === null || defaultPortions <= 0 || defaultPortions > 10){
+    if (defaultPortions === undefined || defaultPortions === null || defaultPortions <= 0 || defaultPortions > 10) {
         defaultPortions = 1;
     }
     return `
@@ -74,7 +68,6 @@ function generatePortionPicker(defaultPortions) {
     </div>
     `
 }
-
 
 
 /**
@@ -99,7 +92,6 @@ function setPortionCount() {
 }
 
 
-
 /**
  * @brief updates the visible portion count in portionCount element
  */
@@ -107,7 +99,6 @@ function updatePortionCount() {
     let portionCount = document.getElementById("customRange3").value;
     document.getElementById("portionCount").innerHTML = "Počet porcí: " + portionCount;
 }
-
 
 
 /**
@@ -124,12 +115,10 @@ function finishIngredientPicking() {
     if (allChecked) {
         document.getElementById("ingredient-container").style.boxShadow = "20px 20px 50px #a4e3a4";
         document.getElementById("step-header").scrollIntoView();
-    }
-    else{
+    } else {
         document.getElementById("ingredient-container").style.boxShadow = "20px 20px 50px dimgray";
     }
 }
-
 
 
 /**
@@ -154,7 +143,6 @@ function generateIngredientDiv(name, amount, unit) {
 }
 
 
-
 /**
  * @brief once the step is marked as done, this function hides the description
  */
@@ -176,7 +164,6 @@ function setStepAsDone(step, id) {
     }
     checkIfAllStepsDone();
 }
-
 
 
 /**
@@ -219,7 +206,6 @@ function generateStepDiv(id, name, description, time) {
             </div>`;
     return htmlSegment;
 }
-
 
 
 /**
@@ -277,7 +263,6 @@ async function renderRecipe(recipeId) {
                     <div class="timer_container" id="timer_container"></div></div>`;
     return htmlResponse;
 }
-
 
 
 /**

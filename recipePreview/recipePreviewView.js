@@ -1,4 +1,13 @@
 /**
+ * @file recipePreviewView.js
+ * @author Matěj Konopík (xkonop03@vutbr.cz)
+ * @brief This file contains functions for rendering recipe previews in modal windows
+ * @version 1.0
+ * @date 2022-11-15
+ */
+
+
+/**
  * @brief Generates HTML for one step of the recipe preview
  * @param name
  * @param description
@@ -7,7 +16,7 @@
  */
 function generatePreviewStepDiv(name, description, time) {
     let minuteText = "";
-    if (time !=="") {
+    if (time !== "") {
 
         minuteText = "minut";
     }
@@ -23,7 +32,6 @@ function generatePreviewStepDiv(name, description, time) {
             </div>
             </div>`;
 }
-
 
 
 /**
@@ -42,16 +50,14 @@ function generatePreviewSteps(steps) {
 }
 
 
-
 /**
  * @brief Quits preview and runs cooking
  * @param recipeId
  */
 async function startCookingFromPreview(recipeId) {
-    await  modalTrigger(-1);
+    await modalTrigger(-1);
     await swapContent(recipeId);
 }
-
 
 
 /**

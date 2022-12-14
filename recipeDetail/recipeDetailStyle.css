@@ -1,7 +1,7 @@
 /*
- file recipeDetailView.css
+ file recipeDetailStyle.css
  author Matěj Konopík (xkonop03@vutbr.cz)
- brief This file contains styles for rendering recipe detail view
+ brief This file contains styles for rendering recipe preview for modal windows
  version 1.0
  date 2022-11-15
 */
@@ -380,7 +380,7 @@ h3 {
     margin-right: 30px;
 }
 
-.step-radio-checkmark{
+.step-radio-checkmark {
     margin-top: 12px;
 }
 
@@ -459,7 +459,7 @@ h3 {
     width: available;
 }
 
-.recipe-footer{
+.recipe-footer {
     justify-self: center;
     display: flex;
     justify-content: center;
@@ -470,7 +470,7 @@ h3 {
     margin: 4em 4em 0em 4em;
 }
 
-.recipe-button-home, .recipe-button-home-ready{
+.recipe-button-home, .recipe-button-home-ready {
     padding: 1em;
     border-radius: 1em;
     text-align: center;
@@ -481,7 +481,7 @@ h3 {
     transition: 0.2s;
 }
 
-.recipe-button-restart{
+.recipe-button-restart {
     padding: 1em;
     border-radius: 1em;
     text-align: center;
@@ -492,19 +492,19 @@ h3 {
     transition: 0.2s;
 }
 
-.recipe-button-home:hover{
+.recipe-button-home:hover {
     color: white;
 }
 
-.recipe-button-restart:hover{
+.recipe-button-restart:hover {
     color: white;
 }
 
-.recipe-button-home-ready:hover{
+.recipe-button-home-ready:hover {
     color: white;
 }
 
-.recipe-header{
+.recipe-header {
     border-radius: 0 0 2em 2em;
     box-shadow: 20px 20px 50px dimgray;
     background: #8c8c8c;
@@ -517,7 +517,7 @@ h3 {
     padding: 2em;
 }
 
-.home-btn{
+.home-btn {
     border: none;
     text-align: center;
     margin: 1em;
@@ -526,23 +526,23 @@ h3 {
     transition: 0.2s;
 }
 
-.home-btn:hover{
+.home-btn:hover {
     color: #ffffff;
     background: none;
 }
 
-.refresh-btn:hover{
+.refresh-btn:hover {
     cursor: pointer;
 }
 
-.recipe-name{
+.recipe-name {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
-.recipe-category{
+.recipe-category {
     color: black;
     background: #a4e3a4;
     padding: 0.5em;
@@ -551,18 +551,18 @@ h3 {
     border: 2px solid black;
 }
 
-@media(max-width: 600px){
-    .step{
+@media (max-width: 600px) {
+    .step {
         padding: 1em;
         margin: 1em;
     }
 
-    .ingredient-container, .recipe-header, .portion-picker-container, .recipe-footer{
+    .ingredient-container, .recipe-header, .portion-picker-container, .recipe-footer {
         padding: 1em;
         margin: 1em;
     }
 
-    .step-radio-container{
+    .step-radio-container {
         margin-right: 3px;
     }
 
